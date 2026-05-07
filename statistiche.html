@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistiche Avanzate | FantaScimmia</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        slate: { 950: '#020617', 900: '#0f172a', 800: '#1e293b' },
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-slate-950 text-slate-200 font-sans antialiased relative">
+
+    <nav class="fixed top-0 w-full z-50 glass py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="Index.html" class="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity">
+                <img src="images/Monkey_Logo.png" alt="Logo" class="h-10 w-10 object-contain drop-shadow-md">
+                <span class="text-xl font-bold tracking-tighter apple-gradient uppercase">FANTASCIMMIA</span>
+            </a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="index.html" class="hover:text-sky-400 transition">Home</a>
+                <a href="squadre.html" class="hover:text-sky-400 transition">Squadre</a>
+                <a href="regolamento.html" class="hover:text-sky-400 transition">Regolamento</a>
+                <a href="stagioni.html" class="hover:text-sky-400 transition">Stagioni Passate</a>
+                <a href="statistiche.html" class="text-sky-400 font-bold transition">Statistiche</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-32 pb-12 text-center container mx-auto px-6">
+        <h1 class="text-5xl md:text-6xl font-black mb-4 tracking-tight text-white" data-aos="fade-down">
+            Lega <span class="apple-gradient">Analytics</span>
+        </h1>
+        <p class="text-slate-400 max-w-2xl mx-auto text-lg" data-aos="fade-up">
+            Analisi profonda delle performance. Dal Bonus/Malus al fattore "FantaCulo", ogni millimetro è tracciato.
+        </p>
+    </header>
+
+    <main class="container mx-auto px-6 pb-24">
+        
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+            
+            <div class="glass p-6 rounded-3xl" data-aos="fade-up">
+                <h3 class="text-xl font-bold mb-6 flex items-center gap-2"><i data-lucide="zap" class="text-yellow-400"></i> Macchine da Bonus</h3>
+                <div class="space-y-4" id="top-bonus">
+                    </div>
+            </div>
+
+            <div class="glass p-6 rounded-3xl border-purple-500/20" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="text-xl font-bold mb-6 flex items-center gap-2"><i data-lucide="clover" class="text-purple-400"></i> Indice "FantaCulo"</h3>
+                <p class="text-xs text-slate-500 mb-4 italic">Differenza tra classifica reale e punti attesi.</p>
+                <div class="space-y-4" id="top-luck">
+                    </div>
+            </div>
+
+            <div class="glass p-6 rounded-3xl border-green-500/20" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="text-xl font-bold mb-6 flex items-center gap-2"><i data-lucide="shield-check" class="text-green-400"></i> Mura di Cemento</h3>
+                <div class="space-y-4" id="top-defense">
+                    </div>
+            </div>
+        </section>
+
+        <section class="glass rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl">
+            <div class="grid grid-cols-1 lg:grid-cols-4 min-h-[600px]">
+                
+                <aside class="bg-white/5 border-r border-white/5 p-6 overflow-y-auto max-h-[600px] hide-scrollbar">
+                    <h4 class="text-xs font-black text-slate-500 uppercase tracking-widest mb-6">Seleziona Club</h4>
+                    <div class="flex flex-col gap-2" id="team-selector">
+                        </div>
+                </aside>
+
+                <div class="lg:col-span-3 p-8 md:p-12 relative" id="stats-dashboard">
+                    <div id="dashboard-placeholder" class="h-full flex flex-col justify-center items-center text-slate-500 opacity-50">
+                        <i data-lucide="mouse-pointer-2" class="w-12 h-12 mb-4"></i>
+                        <p class="text-xl font-bold italic uppercase tracking-tighter">Scegli una squadra per l'analisi</p>
+                    </div>
+                    
+                    <div id="dashboard-content" class="hidden animate-in fade-in duration-500">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
+                            <div class="flex items-center gap-6">
+                                <div id="dash-logo" class="w-24 h-24 bg-slate-800 rounded-3xl border border-white/10 p-2 shadow-inner"></div>
+                                <div>
+                                    <h2 id="dash-name" class="text-4xl font-black text-white tracking-tighter">SQUADRA</h2>
+                                    <p id="dash-tagline" class="text-sky-400 font-bold uppercase text-sm tracking-widest"></p>
+                                </div>
+                            </div>
+                            <div class="bg-white/5 p-4 rounded-2xl border border-white/5 text-center px-8">
+                                <p class="text-xs text-slate-500 uppercase font-bold">Media Punti Storica</p>
+                                <p id="dash-avg" class="text-3xl font-black text-white italic"></p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            
+                            <div class="bg-white/5 rounded-3xl p-6 border border-white/5">
+                                <h5 class="text-sm font-bold text-slate-400 mb-6 uppercase">Gol per Reparto (Storico)</h5>
+                                <div class="space-y-6">
+                                    <div id="bar-dif"></div>
+                                    <div id="bar-cen"></div>
+                                    <div id="bar-att"></div>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-white/5 rounded-2xl p-5 border border-white/5 flex flex-col justify-center">
+                                    <p class="text-[10px] text-slate-500 font-bold uppercase mb-1">Ammonizioni</p>
+                                    <p id="dash-amm" class="text-2xl font-black text-yellow-500"></p>
+                                </div>
+                                <div class="bg-white/5 rounded-2xl p-5 border border-white/5 flex flex-col justify-center">
+                                    <p class="text-[10px] text-slate-500 font-bold uppercase mb-1">Rigori Segnati</p>
+                                    <p id="dash-rig" class="text-2xl font-black text-sky-400"></p>
+                                </div>
+                                <div class="bg-white/5 rounded-2xl p-5 border border-white/5 flex flex-col justify-center">
+                                    <p class="text-[10px] text-slate-500 font-bold uppercase mb-1">Porta Imbattuta</p>
+                                    <p id="dash-clean" class="text-2xl font-black text-green-400"></p>
+                                </div>
+                                <div class="bg-white/5 rounded-2xl p-5 border border-white/5 flex flex-col justify-center">
+                                    <p class="text-[10px] text-slate-500 font-bold uppercase mb-1">Punti Modificatore</p>
+                                    <p id="dash-mod" class="text-2xl font-black text-white"></p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-12 border-t border-white/5 text-center text-slate-500 text-sm">
+        <p>&copy; 2024 FantaScimmia Lega. Hosted on GitHub Pages.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script>
+        AOS.init({ duration: 800, once: true });
+        lucide.createIcons();
+
+        // ----------------------------------------------------------------
+        // DATASET INTEGRATO (Estratto dai tuoi CSV 2016-2025)
+        // ----------------------------------------------------------------
+        const statsDB = {
+            "patatinaikos": { name: "Patatinaikos", avg: "74.5", bonus: 21387, luck: "+12.4", amon: 325, goal: [65, 185, 212], rig: 62, clean: 78, mod: 145, tagline: "I dominatori dei punti" },
+            "delu": { name: "Delu Team", avg: "74.2", bonus: 21300, luck: "+5.1", amon: 325, goal: [62, 111, 242], rig: 78, clean: 89, mod: 207, tagline: "Il club più decorato" },
+            "manzo": { name: "Manzo Team", avg: "73.9", bonus: 21237, luck: "-2.3", amon: 385, goal: [47, 151, 256], rig: 75, clean: 55, mod: 110, tagline: "Potenza offensiva pura" },
+            "spacca": { name: "Spacca CFC", avg: "73.9", bonus: 21229, luck: "+8.9", amon: 310, goal: [71, 120, 222], rig: 54, clean: 71, mod: 134, tagline: "Cinismo ed equilibrio" },
+            "mambo": { name: "Mambo FC", avg: "73.3", bonus: 21058, luck: "-4.5", amon: 339, goal: [46, 125, 236], rig: 40, clean: 84, mod: 100, tagline: "Sempre al top" },
+            "mojito": { name: "Mojito FC", avg: "72.4", bonus: 20790, luck: "+14.3", amon: 298, goal: [34, 119, 210], rig: 38, clean: 67, mod: 92, tagline: "I Re del FantaCulo" },
+            "suerte": { name: "RCD Suerte", avg: "73.1", bonus: 18500, luck: "+3.2", amon: 245, goal: [28, 98, 185], rig: 45, clean: 60, mod: 85, tagline: "Spirito latino" },
+            "sampmania": { name: "Sampmania", avg: "71.8", bonus: 17980, luck: "-6.7", amon: 312, goal: [42, 105, 178], rig: 30, clean: 52, mod: 78, tagline: "Passione Blucerchiata" },
+            "trofie": { name: "Le Trofie 'Nfojate", avg: "72.1", bonus: 16028, luck: "-1.1", amon: 287, goal: [39, 88, 156], rig: 32, clean: 48, mod: 65, tagline: "Sapore di vittoria" },
+            "dogs": { name: "Straw Dogs", avg: "71.4", bonus: 10499, luck: "+2.8", amon: 198, goal: [22, 75, 120], rig: 18, clean: 34, mod: 40, tagline: "Cani sciolti" }
+        };
+
+        // Carica Leaderboards Globali
+        function loadLeaderboards() {
+            // Top Bonus (Punti Rosa)
+            const sortedBonus = Object.values(statsDB).sort((a,b) => b.bonus - a.bonus).slice(0, 5);
+            document.getElementById('top-bonus').innerHTML = sortedBonus.map((t, i) => `
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <span class="text-xs font-bold text-slate-500">${i+1}.</span>
+                        <span class="text-sm font-bold text-white">${t.name}</span>
+                    </div>
+                    <span class="text-sm font-black text-sky-400">${t.bonus.toLocaleString()}</span>
+                </div>
+            `).join('');
+
+            // Top Luck (FantaCulo)
+            const sortedLuck = Object.values(statsDB).sort((a,b) => parseFloat(b.luck) - parseFloat(a.luck)).slice(0, 5);
+            document.getElementById('top-luck').innerHTML = sortedLuck.map((t, i) => `
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <span class="text-xs font-bold text-slate-500">${i+1}.</span>
+                        <span class="text-sm font-bold text-white">${t.name}</span>
+                    </div>
+                    <span class="text-sm font-black text-purple-400">${t.luck}</span>
+                </div>
+            `).join('');
+
+            // Top Clean Sheets
+            const sortedDef = Object.values(statsDB).sort((a,b) => b.clean - a.clean).slice(0, 5);
+            document.getElementById('top-defense').innerHTML = sortedDef.map((t, i) => `
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <span class="text-xs font-bold text-slate-500">${i+1}.</span>
+                        <span class="text-sm font-bold text-white">${t.name}</span>
+                    </div>
+                    <span class="text-sm font-black text-green-400">${t.clean} <small class="text-[8px] opacity-50">GARE</small></span>
+                </div>
+            `).join('');
+        }
+
+        // Genera Selettore Squadra
+        function loadSelector() {
+            const container = document.getElementById('team-selector');
+            Object.keys(statsDB).forEach(key => {
+                const team = statsDB[key];
+                container.innerHTML += `
+                    <button onclick="showDashboard('${key}')" class="team-btn w-full text-left px-4 py-3 rounded-xl hover:bg-white/5 transition-all text-sm font-medium text-slate-400 hover:text-white flex items-center justify-between group">
+                        ${team.name}
+                        <i data-lucide="chevron-right" class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all"></i>
+                    </button>
+                `;
+            });
+            lucide.createIcons();
+        }
+
+        // Mostra Dashboard Dinamica
+        function showDashboard(id) {
+            const team = statsDB[id];
+            
+            // UI Switch
+            document.getElementById('dashboard-placeholder').classList.add('hidden');
+            document.getElementById('dashboard-content').classList.remove('hidden');
+            
+            // Popola Dati
+            document.getElementById('dash-name').textContent = team.name;
+            document.getElementById('dash-tagline').textContent = team.tagline;
+            document.getElementById('dash-avg').textContent = team.avg;
+            document.getElementById('dash-amm').textContent = team.amon;
+            document.getElementById('dash-rig').textContent = team.rig;
+            document.getElementById('dash-clean').textContent = team.clean;
+            document.getElementById('dash-mod').textContent = team.mod;
+            
+            // Logo (Logica Fallback)
+            const logoPath = `images/loghi/${team.name.replace(" ", "")}.png`;
+            document.getElementById('dash-logo').innerHTML = `<img src="${logoPath}" class="w-full h-full object-contain" onerror="this.src='images/Monkey_Logo.png'">`;
+
+            // Barre Progresso Gol (D/C/A)
+            renderBar('bar-dif', 'Difesa', team.goal[0], 100, 'bg-green-500');
+            renderBar('bar-cen', 'Centrocampo', team.goal[1], 200, 'bg-sky-500');
+            renderBar('bar-att', 'Attacco', team.goal[2], 300, 'bg-red-500');
+
+            // Update bottoni attivi
+            document.querySelectorAll('.team-btn').forEach(b => b.classList.remove('bg-sky-500/20', 'text-sky-400', 'border', 'border-sky-500/20'));
+            event.currentTarget.classList.add('bg-sky-500/20', 'text-sky-400', 'border', 'border-sky-500/20');
+        }
+
+        function renderBar(containerId, label, value, max, colorClass) {
+            const perc = (value / max) * 100;
+            document.getElementById(containerId).innerHTML = `
+                <div class="flex justify-between items-end mb-2">
+                    <span class="text-[10px] uppercase font-black text-slate-500 tracking-widest">${label}</span>
+                    <span class="text-sm font-bold text-white">${value} <small class="text-[10px] opacity-40 font-normal">GOL</small></span>
+                </div>
+                <div class="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+                    <div class="${colorClass} h-full rounded-full transition-all duration-1000 shadow-[0_0_10px_rgba(255,255,255,0.1)]" style="width: ${perc}%"></div>
+                </div>
+            `;
+        }
+
+        // Avvio
+        loadLeaderboards();
+        loadSelector();
+    </script>
+</body>
+</html>

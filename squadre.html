@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Squadre | FantaScimmia</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        slate: { 950: '#020617', 900: '#0f172a', 800: '#1e293b' },
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-slate-950 text-slate-200 font-sans antialiased relative">
+
+    <nav class="fixed top-0 w-full z-50 glass py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="Index.html" class="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity">
+                <img src="images/Monkey_Logo.png" alt="Logo FantaScimmia" class="h-10 w-10 object-contain drop-shadow-md">
+                <span class="text-xl font-bold tracking-tighter apple-gradient">FANTASCIMMIA</span>
+            </a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="index.html" class="hover:text-sky-400 transition">Home</a>
+                <a href="squadre.html" class="hover:text-sky-400 transition">Squadre</a>
+                <a href="regolamento.html" class="hover:text-sky-400 transition">Regolamento</a>
+                <a href="stagioni.html" class="hover:text-sky-400 transition">Stagioni Passate</a>
+                <a href="statistiche.html" class="text-sky-400 font-bold transition">Statistiche</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-32 pb-12 text-center container mx-auto px-6">
+        <h1 class="text-5xl md:text-6xl font-black mb-4 tracking-tight text-white" data-aos="fade-down">
+            Le <span class="apple-gradient">Fantasquadre</span>
+        </h1>
+        <p class="text-slate-400 max-w-2xl mx-auto text-lg" data-aos="fade-up" data-aos-delay="100">
+            I dieci club che si danno battaglia nella lega. Seleziona una squadra per scoprirne la storia, i dettagli e la sala trofei ufficiale.
+        </p>
+    </header>
+
+    <main class="container mx-auto px-6 pb-24">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="teams-grid">
+            </div>
+    </main>
+
+    <div id="team-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onclick="closeModal()"></div>
+        
+        <div class="glass relative w-full max-w-3xl mx-4 rounded-3xl overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300" id="modal-content-box">
+            
+            <div class="p-8 border-b border-white/10 flex items-center gap-6 relative">
+                <button onclick="closeModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white transition-colors bg-white/5 p-2 rounded-full">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+                <div class="w-24 h-24 bg-slate-800 rounded-2xl flex items-center justify-center shadow-inner overflow-hidden border border-white/5 flex-shrink-0">
+                    <img id="modal-logo" src="" alt="Logo" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <h2 id="modal-title" class="text-3xl font-black text-white tracking-tight uppercase">Nome Squadra</h2>
+                    <p id="modal-subtitle" class="text-sky-400 font-bold text-sm tracking-widest uppercase mt-1">Presidente</p>
+                </div>
+            </div>
+
+            <div class="flex border-b border-white/5 bg-white/5">
+                <button onclick="switchModalTab('storia')" id="tab-storia" class="flex-1 py-4 text-sm font-bold text-slate-400 hover:text-white transition-colors border-b-2 border-transparent modal-tab-btn uppercase tracking-widest">Storia</button>
+                <button onclick="switchModalTab('info')" id="tab-info" class="flex-1 py-4 text-sm font-bold text-slate-400 hover:text-white transition-colors border-b-2 border-transparent modal-tab-btn uppercase tracking-widest">Info Club</button>
+                <button onclick="switchModalTab('palmares')" id="tab-palmares" class="flex-1 py-4 text-sm font-bold text-slate-400 hover:text-white transition-colors border-b-2 border-transparent modal-tab-btn uppercase tracking-widest flex items-center justify-center gap-2"><i data-lucide="trophy" class="w-4 h-4"></i> Sala Trofei</button>
+            </div>
+
+            <div class="p-8 min-h-[300px]">
+                <div id="content-storia" class="modal-tab-content text-slate-300 leading-relaxed"></div>
+                <div id="content-info" class="modal-tab-content hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-white/5 border border-white/10 p-5 rounded-2xl flex items-center gap-4">
+                            <div class="bg-sky-500/20 p-3 rounded-xl"><i data-lucide="user" class="text-sky-400 w-6 h-6"></i></div>
+                            <div><p class="text-xs text-slate-500 font-bold uppercase tracking-wider">Presidente</p><p id="info-pres" class="text-white font-bold text-lg">-</p></div>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 p-5 rounded-2xl flex items-center gap-4">
+                            <div class="bg-green-500/20 p-3 rounded-xl"><i data-lucide="map-pin" class="text-green-400 w-6 h-6"></i></div>
+                            <div><p class="text-xs text-slate-500 font-bold uppercase tracking-wider">Stadio</p><p id="info-stadio" class="text-white font-bold text-lg">-</p></div>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 p-5 rounded-2xl flex items-center gap-4">
+                            <div class="bg-purple-500/20 p-3 rounded-xl"><i data-lucide="calendar" class="text-purple-400 w-6 h-6"></i></div>
+                            <div><p class="text-xs text-slate-500 font-bold uppercase tracking-wider">Fondazione</p><p id="info-anno" class="text-white font-bold text-lg">-</p></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="content-palmares" class="modal-tab-content hidden">
+                    <div id="trophies-container" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="col-span-full text-center py-10 text-slate-500 flex flex-col items-center">
+                            <i data-lucide="loader-2" class="w-8 h-8 animate-spin mb-2"></i>
+                            <p>Caricamento trofei dal server...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+        lucide.createIcons();
+
+        // Database Statico Squadre
+        const teamsData = {
+            "delu": {
+                name: "Delu Team", pres: "De Lucia Luca", stadio: "Tommy's Stadium", anno: "2008",
+                logo: "images/loghi/DeluTeam.jpg",
+                storia: "<p class='italic text-lg text-white'>...Il club più titolato della lega…..What Else?</p>"
+            },
+            "trofie": {
+                name: "Le Trofie 'Nfojate", pres: "D'Alessandro Marco", stadio: "Stadium", anno: "2015",
+                logo: "images/loghi/TrofieNfojate2025.png",
+                storia: "<p>Nessuna storia disponibile al momento.</p>"
+            },
+            "mambo": {
+                name: "Mambo F.C.", pres: "Garbarino Matteo", stadio: "Stadium", anno: "2015",
+                logo: "images/loghi/MamboFC.png",
+                storia: "<p>Nessuna storia disponibile al momento.</p>"
+            },
+            "manzo": {
+                name: "Manzo Team", pres: "Amaranto Stefano", stadio: "Manzo Stadium", anno: "2014",
+                logo: "images/loghi/ManzoTeam2025.jpg",
+                storia: "<p>ManzoTeam FoodBall Club risorge dopo 10 anni rientrando in una Lega molto competitiva mettendo subito in chiaro che non farà da comparsa né tantomeno da squadra cuscinetto. Presidente scoppiettante e vulcanico, non teme l'avversario lo sfida a suon di pianti isterici, e spesso la tattica funziona. Il primo anno raggiunge subito una finale di Europa League e una semifinale di Coppa Italia. Dopo il primo anno di ambientamento, ora è pronto a dare battaglia.</p>"
+            },
+            "mojito": {
+                name: "Mojito F.C.", pres: "Porta Matteo", stadio: "Mojito Stadium", anno: "2011",
+                logo: "images/loghi/MojitoFC.png",
+                storia: "<p>Mojito F.C. nasce nel 2011 dopo un'importante vacanza a Formentera grazie ad una nuova cordata di investitori che volevano portare la squadra ai magnifici livelli degli anni 90. I tifosi sono già in visibilio dopo che il Presidente ha dichiarato che la squadra è pronta per puntare al triplete nella prossima stagione.</p>"
+            },
+            "patatinaikos": {
+                name: "Patatinaikos", pres: "Giori Andrea", stadio: "La Patatera", anno: "2011",
+                logo: "images/loghi/Patatinaikos.png",
+                storia: "<p>Il Patatinaikos viene fondato nel 2011 sulle ceneri dei Debosciati, squadra di carattere ma con poche disponibilità, con l’immissione di capitali freschi da parte di alcune delle figure di maggior spicco nell’industria pornografica. Questo porta la squadra ad un diverso livello competitivo, e soprattutto alla costruzione della leggendaria “Patatera”, il suo caldissimo stadio di proprietà (che prevede l’ingresso donne omaggio). Squadra che in qualche annata è riuscita a dettare legge entro i confini nazionali, deve migliorare sotto il profilo internazionale.</p>"
+            },
+            "suerte": {
+                name: "RCD Suerte", pres: "Colladon Gigi", stadio: "Stadium", anno: "2018",
+                logo: "images/loghi/suerte.png",
+                storia: "<p>Nessuna storia disponibile al momento.</p>"
+            },
+            "sampmania": {
+                name: "Sampmania", pres: "Morasso Luca", stadio: "Cathedral Blaocercada", anno: "2009",
+                logo: "images/loghi/Sampmania.png",
+                storia: "<p>Sampmania appartiene al nostro fantacalcio fin dalla prima giornata di fondazione. Ha vissuto da subito momenti di gloria nei primi anni di storia, e poi come ogni meravigliosa creatura, è iniziata una leggera decadenza negli ultimi due anni, ricchi di amarezza e poca soddisfazione. Grazie alla genialità della sua dirigenza ha capito gli errori ed è pronta a tornare fin da subito competitiva. In culo alla balena...</p>"
+            },
+            "spacca": {
+                name: "Spacca CFC", pres: "Tagliavacche Marco", stadio: "Stadium", anno: "2010",
+                logo: "images/loghi/Spacca.png",
+                storia: "<p>Nessuna storia disponibile al momento.</p>"
+            },
+            "dogs": {
+                name: "Straw Dogs", pres: "Mello Simone", stadio: "Stadium", anno: "2018",
+                logo: "images/loghi/Dogs.png",
+                storia: "<p>Nessuna storia disponibile al momento.</p>"
+            }
+        };
+
+        // Generazione Griglia
+        const gridContainer = document.getElementById('teams-grid');
+        Object.keys(teamsData).forEach((key, index) => {
+            const team = teamsData[key];
+            const delay = index * 50;
+            gridContainer.innerHTML += `
+                <div class="glass rounded-3xl p-6 hover:-translate-y-2 transition-all duration-300 cursor-pointer group border border-white/5 hover:border-sky-500/30" 
+                     data-aos="fade-up" data-aos-delay="${delay}" onclick="openModal('${key}')">
+                    <div class="flex items-center gap-5">
+                        <div class="w-16 h-16 bg-slate-800 rounded-xl overflow-hidden shadow-inner border border-white/10 group-hover:border-sky-400 transition-colors flex-shrink-0 flex items-center justify-center">
+                            <i data-lucide="shield" class="w-8 h-8 text-slate-600 absolute opacity-30"></i>
+                            <img src="${team.logo}" alt="${team.name}" class="w-full h-full object-cover relative z-10" onerror="this.style.display='none'">
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-sky-400 transition-colors uppercase tracking-tight">${team.name}</h3>
+                            <p class="text-xs text-slate-500 uppercase tracking-widest mt-1">${team.pres}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        lucide.createIcons();
+
+        // Logica Modal
+        const modal = document.getElementById('team-modal');
+        const modalContent = document.getElementById('modal-content-box');
+
+        function openModal(teamId) {
+            const t = teamsData[teamId];
+            document.getElementById('modal-title').textContent = t.name;
+            document.getElementById('modal-subtitle').textContent = t.pres;
+            const logoImg = document.getElementById('modal-logo');
+            logoImg.src = t.logo;
+            logoImg.style.display = 'block';
+            logoImg.onerror = () => logoImg.style.display = 'none';
+
+            document.getElementById('content-storia').innerHTML = t.storia;
+            document.getElementById('info-pres').textContent = t.pres;
+            document.getElementById('info-stadio').textContent = t.stadio;
+            document.getElementById('info-anno').textContent = t.anno;
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            }, 10);
+
+            switchModalTab('storia');
+            fetchTrophies(teamId); // Carica trofei con ICONE CUSTOM
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            setTimeout(() => { modal.classList.add('hidden'); }, 300);
+        }
+
+        function switchModalTab(tabName) {
+            document.querySelectorAll('.modal-tab-btn').forEach(btn => {
+                btn.classList.remove('text-white', 'border-sky-400');
+                btn.classList.add('text-slate-400', 'border-transparent');
+            });
+            document.querySelectorAll('.modal-tab-content').forEach(content => content.classList.add('hidden'));
+
+            const activeBtn = document.getElementById(`tab-${tabName}`);
+            activeBtn.classList.remove('text-slate-400', 'border-transparent');
+            activeBtn.classList.add('text-white', 'border-sky-400');
+            document.getElementById(`content-${tabName}`).classList.remove('hidden');
+        }
+
+        // Recupero Palmares con le tue ICONE CUSTOM!
+        async function fetchTrophies(teamId) {
+            const container = document.getElementById('trophies-container');
+            container.innerHTML = `<div class="col-span-full text-center py-10 text-slate-500"><i data-lucide="loader-2" class="w-8 h-8 animate-spin mx-auto mb-2"></i><p>Caricamento dal server...</p></div>`;
+            lucide.createIcons();
+
+            try {
+                const response = await fetch('dati.json');
+                if (!response.ok) throw new Error("JSON non disponibile");
+                const data = await response.json();
+                
+                const palmares = data.palmares_squadre[teamId];
+                if (!palmares) throw new Error("Squadra non trovata nel JSON");
+
+                // Configurazione Mappata sulle TUE classi custom "fanta-*" e SVG
+                const trophiesConfig = [
+                    { key: 'campionato', name: 'Campionato', customClass: 'fanta-campionato', isSvg: false, color: 'text-yellow-400', bg: 'bg-yellow-400/10 border-yellow-400/20' },
+                    { key: 'coppa_italia', name: 'Coppa Italia', customClass: 'fanta-coppa-italia', isSvg: false, color: 'text-red-400', bg: 'bg-red-400/10 border-red-400/20' },
+                    { key: 'champions', name: 'Champions', customClass: 'fanta-champions-league', isSvg: false, color: 'text-sky-300', bg: 'bg-sky-300/10 border-sky-300/20' },
+                    { key: 'europa_league', name: 'Europa League', customClass: 'fanta-europa-league', isSvg: false, color: 'text-orange-400', bg: 'bg-orange-400/10 border-orange-400/20' },
+                    { key: 'supercoppa_it', name: 'Supercoppa IT', customClass: 'fanta-supercoppa-italiana', isSvg: false, color: 'text-green-400', bg: 'bg-green-400/10 border-green-400/20' },
+                    { key: 'supercoppa_eu', name: 'Supercoppa EU', customClass: 'fanta-supercoppa-europea', isSvg: false, color: 'text-blue-400', bg: 'bg-blue-400/10 border-blue-400/20' },
+                    { key: 'intercontinentale', name: 'Intercontinentale', customClass: 'fanta-coppa-intercontinentale', isSvg: false, color: 'text-slate-300', bg: 'bg-slate-300/10 border-slate-300/20' },
+                    { key: 'highlander', name: 'Highlander', customClass: 'fanta-icon/fire-flame-curved-solid.svg', isSvg: true, color: 'text-rose-500', bg: 'bg-rose-500/10 border-rose-500/20' }
+                ];
+
+                container.innerHTML = '';
+                let totalTrophies = 0;
+
+                trophiesConfig.forEach(t => {
+                    const count = palmares[t.key] || 0;
+                    totalTrophies += count;
+                    
+                    const isActive = count > 0;
+                    const displayColor = isActive ? t.color : 'text-slate-600';
+                    const displayBg = isActive ? t.bg : 'bg-white/5 border-white/5';
+                    const opacity = isActive ? 'opacity-100' : 'opacity-40';
+
+                    // Rendering condizionale: Se è SVG usiamo la mask CSS, altrimenti usiamo il Font
+                    let iconHtml = '';
+                    if (t.isSvg) {
+                        iconHtml = `<div class="w-10 h-10 mb-2 ${displayColor}" style="background-color: currentColor; -webkit-mask: url('${t.customClass}') no-repeat center; mask: url('${t.customClass}') no-repeat center; -webkit-mask-size: contain; mask-size: contain;"></div>`;
+                    } else {
+                        iconHtml = `<i class="icon ${t.customClass} text-[40px] mb-2 ${displayColor}"></i>`;
+                    }
+
+                    container.innerHTML += `
+                        <div class="border rounded-2xl p-4 text-center ${displayBg} ${opacity} flex flex-col items-center justify-center transition-all duration-300">
+                            ${iconHtml}
+                            <span class="text-3xl font-black text-white">${count}</span>
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-1">${t.name}</span>
+                        </div>
+                    `;
+                });
+
+                if(totalTrophies === 0) {
+                     container.innerHTML = `<div class="col-span-full text-center py-10 text-slate-500"><i data-lucide="frown" class="w-8 h-8 mx-auto mb-2 opacity-50"></i><p>Nessun trofeo in bacheca (per ora).</p></div>`;
+                     lucide.createIcons();
+                }
+
+            } catch (error) {
+                console.warn("Lettura trofei fallita:", error.message);
+                container.innerHTML = `
+                    <div class="col-span-full text-center p-6 bg-red-500/10 border border-red-500/20 rounded-2xl text-red-400 text-sm">
+                        Impossibile caricare i trofei. Assicurati che il file <strong>dati.json</strong> esista e sia formattato correttamente.
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

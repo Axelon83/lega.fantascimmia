@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stagioni Passate | FantaScimmia</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        slate: { 950: '#020617', 900: '#0f172a', 800: '#1e293b' },
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Nasconde la scrollbar orizzontale su mobile mantenendo lo scorrimento */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+
+<body class="bg-slate-950 text-slate-200 font-sans antialiased relative min-h-screen flex flex-col">
+
+    <nav class="fixed top-0 w-full z-50 glass py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="Index.html" class="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity">
+                <img src="images/Monkey_Logo.png" alt="Logo FantaScimmia" class="h-10 w-10 object-contain drop-shadow-md">
+                <span class="text-xl font-bold tracking-tighter apple-gradient">FANTASCIMMIA</span>
+            </a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="index.html" class="hover:text-sky-400 transition">Home</a>
+                <a href="squadre.html" class="hover:text-sky-400 transition">Squadre</a>
+                <a href="regolamento.html" class="hover:text-sky-400 transition">Regolamento</a>
+                <a href="stagioni.html" class="hover:text-sky-400 transition">Stagioni Passate</a>
+                <a href="statistiche.html" class="text-sky-400 font-bold transition">Statistiche</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-32 pb-12 text-center container mx-auto px-6">
+        <h1 class="text-5xl md:text-6xl font-black mb-4 tracking-tight text-white" data-aos="fade-down">
+            Archivio <span class="apple-gradient">Stagioni</span>
+        </h1>
+        <p class="text-slate-400 max-w-2xl mx-auto text-lg" data-aos="fade-up" data-aos-delay="100">
+            La Hall of Fame dal 2008 ad oggi. Seleziona un'annata per scoprire chi ha dominato la Lega.
+        </p>
+    </header>
+
+    <div class="flex-grow container mx-auto px-6 flex flex-col lg:flex-row gap-10 pb-20">
+
+        <aside class="w-full lg:w-1/5 flex-shrink-0 z-10">
+            <div class="glass p-3 rounded-3xl lg:sticky lg:top-32 flex overflow-x-auto lg:flex-col gap-2 hide-scrollbar pb-2 lg:pb-0" id="years-list">
+                </div>
+        </aside>
+
+        <main class="w-full lg:w-4/5">
+            <div class="flex items-center justify-between mb-8 border-b border-white/10 pb-4">
+                <h2 id="season-title" class="text-3xl font-black text-white">Caricamento...</h2>
+                <span class="bg-sky-500/20 text-sky-400 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest border border-sky-500/20 shadow-[0_0_10px_rgba(56,189,248,0.2)]">Hall of Fame</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="season-grid">
+                </div>
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+        lucide.createIcons();
+
+        // ----------------------------------------------------------------
+        // 1. DATABASE SQUADRE (Loghi e Nomi)
+        // ----------------------------------------------------------------
+        const teamsDB = {
+            "delu": { name: "Delu Team", logo: "images/loghi/DeluTeam.jpg" },
+            "trofie": { name: "Le Trofie 'Nfojate", logo: "images/loghi/TrofieNfojate.png" },
+            "mambo": { name: "Mambo F.C.", logo: "images/loghi/MamboFC.png" },
+            "manzo": { name: "Manzo Team", logo: "images/loghi/ManzoTeam.jpg" },
+            "mojito": { name: "Mojito F.C.", logo: "images/loghi/MojitoFC.png" },
+            "patatinaikos": { name: "Patatinaikos", logo: "images/loghi/Patatinaikos.png" },
+            "patatinaikos_old": { name: "Patatinaikos", logo: "images/loghi/Patatinaikos_2007.png" }, // Versione vecchia 2009
+            "suerte": { name: "RCD Suerte", logo: "images/loghi/suerte.png" },
+            "sampmania": { name: "Sampmania", logo: "images/loghi/Sampmania.png" },
+            "spacca": { name: "Spacca CFC", logo: "images/loghi/Spacca.png" },
+            "dogs": { name: "Straw Dogs", logo: "images/loghi/Dogs.png" },
+            // Squadre Storiche
+            "ciccio": { name: "Ciccio F.C.", logo: "images/loghi/Ciccio.png" },
+            "alterati": { name: "Alterati 1926", logo: "images/loghi/Alterati.png" },
+            "pancino": { name: "Pancino Team", logo: "images/loghi/PancinoTeam.jpg" },
+            // Placeholder Torneo non ancora finito
+            "nd": { name: "Da Assegnare", logo: "images/Monkey_Logo.png" }
+        };
+
+        // ----------------------------------------------------------------
+        // 2. CONFIGURAZIONE ICONE E COLORI COPPE
+        // ----------------------------------------------------------------
+        const compInfo = {
+            "Campionato": { icon: "fanta-campionato", color: "text-yellow-400" },
+            "Coppa Italia": { icon: "fanta-coppa-italia", color: "text-red-400" },
+            "Champions League": { icon: "fanta-champions-league", color: "text-sky-300" },
+            "Europa League": { icon: "fanta-europa-league", color: "text-orange-400" },
+            "Supercoppa Italiana": { icon: "fanta-supercoppa-italiana", color: "text-green-400" },
+            "Supercoppa Europea": { icon: "fanta-supercoppa-europea", color: "text-blue-400" },
+            "Coppa Intercontinentale": { icon: "fanta-coppa-intercontinentale", color: "text-slate-300" },
+            "Coppa Highlander": { isSvg: true, color: "text-rose-500" }, // Usa CSS Mask per l'SVG
+            "Battle Royale": { isLucide: true, icon: "swords", color: "text-purple-400" },
+            "Campionato Mantra": { isLucide: true, icon: "sigma", color: "text-emerald-400" }
+        };
+
+        // ----------------------------------------------------------------
+        // 3. DATABASE STORICO STAGIONI (Estratto dai tuoi vecchi file)
+        // ----------------------------------------------------------------
+        const seasonsData = {
+            "2025/2026": [
+                { comp: "Campionato", teamId: "nd" }, { comp: "Coppa Italia", teamId: "nd" }, { comp: "Champions League", teamId: "nd" },
+                { comp: "Europa League", teamId: "nd" }, { comp: "Supercoppa Italiana", teamId: "nd" }, { comp: "Supercoppa Europea", teamId: "nd" },
+                { comp: "Coppa Intercontinentale", teamId: "nd" }, { comp: "Coppa Highlander", teamId: "nd" }
+            ],
+            "2024/2025": [
+                { comp: "Campionato", teamId: "patatinaikos" }, { comp: "Coppa Italia", teamId: "spacca" }, { comp: "Champions League", teamId: "delu" },
+                { comp: "Europa League", teamId: "manzo" }, { comp: "Supercoppa Italiana", teamId: "delu" }, { comp: "Supercoppa Europea", teamId: "delu" },
+                { comp: "Coppa Intercontinentale", teamId: "mojito" }, { comp: "Coppa Highlander", teamId: "spacca" }
+            ],
+            "2023/2024": [
+                { comp: "Campionato", teamId: "delu" }, { comp: "Coppa Italia", teamId: "trofie" }, { comp: "Champions League", teamId: "spacca" },
+                { comp: "Europa League", teamId: "delu" }, { comp: "Supercoppa Italiana", teamId: "mambo" }, { comp: "Supercoppa Europea", teamId: "mambo" },
+                { comp: "Coppa Intercontinentale", teamId: "manzo" }, { comp: "Coppa Highlander", teamId: "delu" }
+            ],
+            "2022/2023": [
+                { comp: "Campionato", teamId: "mambo" }, { comp: "Coppa Italia", teamId: "mambo" }, { comp: "Champions League", teamId: "dogs" },
+                { comp: "Europa League", teamId: "mambo" }, { comp: "Supercoppa Italiana", teamId: "mambo" }, { comp: "Supercoppa Europea", teamId: "mambo" },
+                { comp: "Coppa Intercontinentale", teamId: "mojito" }
+            ],
+            "2021/2022": [
+                { comp: "Campionato", teamId: "suerte" }, { comp: "Battle Royale", teamId: "suerte" }, { comp: "Coppa Italia", teamId: "mambo" }, 
+                { comp: "Champions League", teamId: "dogs" }, { comp: "Europa League", teamId: "mambo" }, { comp: "Supercoppa Italiana", teamId: "suerte" }, 
+                { comp: "Supercoppa Europea", teamId: "mojito" }, { comp: "Coppa Intercontinentale", teamId: "mojito" }
+            ],
+            "2020/2021": [
+                { comp: "Campionato", teamId: "suerte" }, { comp: "Coppa Italia", teamId: "manzo" }, { comp: "Champions League", teamId: "patatinaikos" },
+                { comp: "Europa League", teamId: "mojito" }, { comp: "Supercoppa Italiana", teamId: "patatinaikos" }, { comp: "Supercoppa Europea", teamId: "suerte" },
+                { comp: "Coppa Intercontinentale", teamId: "suerte" }
+            ],
+            "2019/2020": [
+                { comp: "Campionato", teamId: "patatinaikos" }, { comp: "Coppa Italia", teamId: "delu" }, { comp: "Champions League", teamId: "suerte" },
+                { comp: "Europa League", teamId: "trofie" }, { comp: "Supercoppa Italiana", teamId: "manzo" }, { comp: "Supercoppa Europea", teamId: "trofie" },
+                { comp: "Coppa Intercontinentale", teamId: "manzo" }
+            ],
+            "2018/2019": [
+                { comp: "Campionato", teamId: "spacca" }, { comp: "Campionato Mantra", teamId: "mambo" }, { comp: "Coppa Italia", teamId: "spacca" }, { comp: "Champions League", teamId: "mambo" },
+                { comp: "Europa League", teamId: "trofie" }, { comp: "Supercoppa Italiana", teamId: "patatinaikos" }, { comp: "Supercoppa Europea", teamId: "manzo" },
+                { comp: "Coppa Intercontinentale", teamId: "mambo" }
+            ],
+            "2017/2018": [
+                { comp: "Campionato", teamId: "patatinaikos" }, { comp: "Coppa Italia", teamId: "patatinaikos" }, { comp: "Champions League", teamId: "spacca" },
+                { comp: "Europa League", teamId: "manzo" }, { comp: "Supercoppa Italiana", teamId: "manzo" }, { comp: "Supercoppa Europea", teamId: "patatinaikos" },
+                { comp: "Coppa Intercontinentale", teamId: "mambo" }
+            ],
+            "2016/2017": [
+                { comp: "Campionato", teamId: "delu" }, { comp: "Coppa Italia", teamId: "manzo" }, { comp: "Champions League", teamId: "sampmania" },
+                { comp: "Europa League", teamId: "patatinaikos" }, { comp: "Supercoppa Italiana", teamId: "sampmania" }, { comp: "Supercoppa Europea", teamId: "sampmania" },
+                { comp: "Coppa Intercontinentale", teamId: "pancino" }
+            ],
+            "2015/2016": [
+                { comp: "Campionato", teamId: "sampmania" }, { comp: "Coppa Italia", teamId: "manzo" }, { comp: "Champions League", teamId: "mojito" },
+                { comp: "Europa League", teamId: "sampmania" }, { comp: "Supercoppa Italiana", teamId: "mojito" }, { comp: "Supercoppa Europea", teamId: "pancino" },
+                { comp: "Coppa Intercontinentale", teamId: "alterati" }
+            ],
+            "2014/2015": [
+                { comp: "Campionato", teamId: "patatinaikos" }, { comp: "Coppa Italia", teamId: "mojito" }, { comp: "Champions League", teamId: "delu" },
+                { comp: "Europa League", teamId: "pancino" }, { comp: "Supercoppa Italiana", teamId: "delu" }, { comp: "Supercoppa Europea", teamId: "alterati" }
+            ],
+            "2013/2014": [
+                { comp: "Campionato", teamId: "delu" }, { comp: "Coppa Italia", teamId: "delu" }, { comp: "Champions League", teamId: "delu" },
+                { comp: "Europa League", teamId: "alterati" }, { comp: "Supercoppa Italiana", teamId: "spacca" }, { comp: "Supercoppa Europea", teamId: "ciccio" }
+            ],
+            "2012/2013": [
+                { comp: "Campionato", teamId: "patatinaikos" }, { comp: "Coppa Italia", teamId: "spacca" }, { comp: "Champions League", teamId: "ciccio" },
+                { comp: "Europa League", teamId: "patatinaikos" }, { comp: "Supercoppa Italiana", teamId: "delu" }, { comp: "Supercoppa Europea", teamId: "ciccio" }
+            ],
+            "2011/2012": [
+                { comp: "Campionato", teamId: "delu" }, { comp: "Coppa Italia", teamId: "mojito" }, { comp: "Champions League", teamId: "delu" },
+                { comp: "Europa League", teamId: "ciccio" }, { comp: "Supercoppa Italiana", teamId: "delu" }
+            ],
+            "2010/2011": [
+                { comp: "Campionato", teamId: "delu" }, { comp: "Coppa Italia", teamId: "patatinaikos_old" }
+            ],
+            "2009/2010": [
+                { comp: "Campionato", teamId: "alterati" }, { comp: "Coppa Italia", teamId: "patatinaikos_old" }
+            ],
+            "2008/2009": [
+                { comp: "Campionato", teamId: "ciccio" }, { comp: "Coppa Italia", teamId: "delu" }
+            ]
+        };
+
+        // ----------------------------------------------------------------
+        // 4. LOGICA GENERAZIONE INTERFACCIA
+        // ----------------------------------------------------------------
+        const yearsListEl = document.getElementById('years-list');
+        const gridEl = document.getElementById('season-grid');
+        const titleEl = document.getElementById('season-title');
+
+        // Genera la lista degli anni nella sidebar
+        const years = Object.keys(seasonsData);
+        years.forEach((year, index) => {
+            const btn = document.createElement('button');
+            btn.className = "season-tab whitespace-nowrap px-5 py-3 rounded-xl border border-transparent text-slate-400 hover:text-white hover:bg-white/5 transition-all text-sm font-bold w-full text-left flex items-center gap-3";
+            btn.innerHTML = `<i data-lucide="calendar" class="w-4 h-4"></i> ${year}`;
+            btn.onclick = () => loadSeason(year);
+            btn.id = `tab-${year}`;
+            yearsListEl.appendChild(btn);
+        });
+
+        function loadSeason(year) {
+            // Aggiorna stato attivo dei tab
+            document.querySelectorAll('.season-tab').forEach(t => {
+                t.classList.remove('bg-sky-500/10', 'text-sky-400', 'border-sky-500/30');
+                t.classList.add('text-slate-400', 'border-transparent');
+            });
+            const activeTab = document.getElementById(`tab-${year}`);
+            activeTab.classList.remove('text-slate-400', 'border-transparent');
+            activeTab.classList.add('bg-sky-500/10', 'text-sky-400', 'border-sky-500/30');
+
+            // Aggiorna titolo
+            titleEl.innerHTML = `Stagione <span class="apple-gradient">${year}</span>`;
+
+            // Renderizza le card
+            gridEl.innerHTML = '';
+            const data = seasonsData[year];
+            
+            data.forEach((item, index) => {
+                const comp = compInfo[item.comp];
+                const team = teamsDB[item.teamId];
+                
+                // Gestione Rendering Icona
+                let iconHtml = '';
+                if (comp.isSvg) {
+                    iconHtml = `<div class="w-7 h-7 ${comp.color}" style="background-color: currentColor; -webkit-mask: url('fanta-icon/fire-flame-curved-solid.svg') no-repeat center; mask: url('fanta-icon/fire-flame-curved-solid.svg') no-repeat center; -webkit-mask-size: contain; mask-size: contain;"></div>`;
+                } else if (comp.isLucide) {
+                    iconHtml = `<i data-lucide="${comp.icon}" class="${comp.color} w-6 h-6"></i>`;
+                } else {
+                    iconHtml = `<i class="icon ${comp.icon} text-[28px] ${comp.color}"></i>`;
+                }
+
+                gridEl.innerHTML += `
+                    <div class="glass rounded-3xl overflow-hidden border border-white/5 hover:border-sky-500/30 transition-all duration-300 group" data-aos="zoom-in" data-aos-delay="${index * 50}">
+                        <div class="bg-white/5 px-4 py-3 border-b border-white/5 flex items-center gap-3">
+                            ${iconHtml}
+                            <h3 class="text-white font-bold text-sm tracking-widest uppercase truncate">${item.comp}</h3>
+                        </div>
+                        <div class="p-6 flex justify-center items-center relative h-48">
+                            <div class="absolute inset-0 opacity-10 blur-2xl group-hover:opacity-30 transition-opacity bg-cover bg-center" style="background-image: url('${team.logo}')"></div>
+                            <img src="${team.logo}" alt="${team.name}" class="w-32 h-32 object-contain relative z-10 drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform duration-500" onerror="this.src='images/Monkey_Logo.png'">
+                        </div>
+                        <div class="bg-slate-900/50 p-4 text-center border-t border-white/5">
+                            <p class="text-sky-400 font-black tracking-tight text-lg uppercase truncate">${team.name}</p>
+                        </div>
+                    </div>
+                `;
+            });
+            lucide.createIcons();
+        }
+
+        // Carica l'anno più recente all'avvio
+        loadSeason(years[0]);
+    </script>
+</body>
+</html>

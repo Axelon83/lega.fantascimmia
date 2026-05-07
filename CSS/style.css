@@ -1,0 +1,105 @@
+/* =========================================
+   FANTASCIMMIA - CORE STYLES (Apple Style)
+========================================= */
+
+.glass {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.apple-gradient {
+    background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Tab Logic */
+.tab-content {
+    display: none;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.4s ease;
+}
+
+.tab-content.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tab-btn.active {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border-right: 3px solid #38bdf8;
+}
+
+/* --- Impact Components --- */
+.budget-hero {
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.15), rgba(14, 165, 233, 0.05));
+    border: 1px solid rgba(14, 165, 233, 0.2);
+}
+
+.role-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 15px; }
+.role-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+.role-card:hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.06); }
+
+.bm-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.stat-row { 
+    display: flex; justify-content: space-between; align-items: center; 
+    padding: 10px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
+}
+.stat-row:last-child { border-bottom: none; }
+
+.badge-pos { background: rgba(34, 197, 94, 0.15); color: #4ade80; padding: 4px 10px; border-radius: 8px; font-weight: 700; font-size: 0.85rem; }
+.badge-neg { background: rgba(239, 68, 68, 0.15); color: #f87171; padding: 4px 10px; border-radius: 8px; font-weight: 700; font-size: 0.85rem; }
+
+/* =========================================
+   FANTA ICONS (Custom Fonts Trophies)
+========================================= */
+@font-face {
+  font-family: "fanta-icon";
+  src: url("fanta-icon/fonts/fanta-icon.eot");
+  src: url("fanta-icon/fonts/fanta-icon.eot?#iefix") format("embedded-opentype"),
+       url("fanta-icon/fonts/fanta-icon.woff") format("woff"),
+       url("fanta-icon/fonts/fanta-icon.ttf") format("truetype"),
+       url("fanta-icon/fonts/fanta-icon.svg#fanta-icon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="fanta-"]:before,
+[class*=" fanta-"]:before {
+  font-family: "fanta-icon" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.fanta-supercoppa-europea:before { content: "\e000"; }
+.fanta-supercoppa-italiana:before { content: "\e001"; }
+.fanta-coppa-italia:before { content: "\e002"; }
+.fanta-europa-league:before { content: "\e003"; }
+.fanta-campionato:before { content: "\e004"; }
+.fanta-champions-league:before { content: "\e005"; }
+.fanta-coppa-intercontinentale:before { content: "\e006"; }
+
+/* Classe speciale per Highlander (SVG Mask) */
+.icon-highlander {
+    background-color: currentColor;
+    -webkit-mask: url('fanta-icon/fire-flame-curved-solid.svg') no-repeat center;
+    mask: url('fanta-icon/fire-flame-curved-solid.svg') no-repeat center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+}

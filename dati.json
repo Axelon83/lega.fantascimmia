@@ -1,0 +1,14 @@
+{
+  "palmares_squadre": {
+    "delu": { "campionato": 5, "coppa_italia": 3, "champions": 4, "europa_league": 1, "supercoppa_eu": 1, "supercoppa_it": 4, "intercontinentale": 0, "highlander": 1 },
+    "trofie": { "campionato": 0, "coppa_italia": 1, "champions": 0, "europa_league": 2, "supercoppa_eu": 1, "supercoppa_it": 0, "intercontinentale": 0, "highlander": 0 },
+    "mambo": { "campionato": 1, "coppa_italia": 2, "champions": 1, "europa_league": 2, "supercoppa_eu": 2, "supercoppa_it": 2, "intercontinentale": 2, "highlander": 0 },
+    "manzo": { "campionato": 0, "coppa_italia": 3, "champions": 0, "europa_league": 2, "supercoppa_eu": 1, "supercoppa_it": 2, "intercontinentale": 2, "highlander": 0 },
+    "mojito": { "campionato": 0, "coppa_italia": 2, "champions": 1, "europa_league": 1, "supercoppa_eu": 1, "supercoppa_it": 1, "intercontinentale": 3, "highlander": 0 },
+    "patatinaikos": { "campionato": 5, "coppa_italia": 3, "champions": 1, "europa_league": 2, "supercoppa_eu": 1, "supercoppa_it": 2, "intercontinentale": 0, "highlander": 0 },
+    "suerte": { "campionato": 2, "coppa_italia": 0, "champions": 1, "europa_league": 0, "supercoppa_eu": 1, "supercoppa_it": 1, "intercontinentale": 1, "highlander": 0 },
+    "sampmania": { "campionato": 1, "coppa_italia": 0, "champions": 1, "europa_league": 1, "supercoppa_eu": 1, "supercoppa_it": 1, "intercontinentale": 0, "highlander": 0 },
+    "spacca": { "campionato": 1, "coppa_italia": 3, "champions": 2, "europa_league": 0, "supercoppa_eu": 0, "supercoppa_it": 1, "intercontinentale": 0, "highlander": 1 },
+    "dogs": { "campionato": 1, "coppa_italia": 0, "champions": 3, "europa_league": 1, "supercoppa_eu": 2, "supercoppa_it": 0, "intercontinentale": 0, "highlander": 0 }
+  }
+}

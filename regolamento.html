@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regolamento | FantaScimmia</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        slate: { 950: '#020617', 900: '#0f172a', 800: '#1e293b' },
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-slate-950 text-slate-200 font-sans antialiased">
+
+    <nav class="fixed top-0 w-full z-50 glass py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="Index.html" class="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity">
+                <img src="images/Monkey_Logo.png" alt="Logo FantaScimmia" class="h-10 w-10 object-contain drop-shadow-md">
+                <span class="text-xl font-bold tracking-tighter apple-gradient">FANTASCIMMIA</span>
+            </a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="index.html" class="hover:text-sky-400 transition">Home</a>
+                <a href="squadre.html" class="hover:text-sky-400 transition">Squadre</a>
+                <a href="regolamento.html" class="hover:text-sky-400 transition">Regolamento</a>
+                <a href="stagioni.html" class="hover:text-sky-400 transition">Stagioni Passate</a>
+                <a href="statistiche.html" class="text-sky-400 font-bold transition">Statistiche</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="pt-28 pb-20 container mx-auto px-6 flex flex-col lg:flex-row gap-10">
+
+        <aside class="w-full lg:w-1/4 flex-shrink-0">
+            <div class="glass p-3 rounded-3xl lg:sticky lg:top-32 flex flex-col gap-1">
+                <div class="px-4 py-3 mb-2 text-xs font-bold text-slate-500 uppercase tracking-widest border-b border-white/5">Rulebook</div>
+                <button onclick="showTab('generali')" id="btn-generali" class="tab-btn active w-full text-left px-4 py-3 rounded-xl flex items-center gap-3">
+                    <i data-lucide="gavel" class="w-5 h-5"></i> Generali
+                </button>
+                <button onclick="showTab('campionato')" id="btn-campionato" class="tab-btn w-full text-left px-4 py-3 rounded-xl flex items-center gap-3">
+                    <i class="fanta-campionato text-lg w-5 text-center"></i> Campionato
+                </button>
+                <button onclick="showTab('coppa-italia')" id="btn-coppa-italia" class="tab-btn w-full text-left px-4 py-3 rounded-xl flex items-center gap-3">
+                    <i class="fanta-coppa-italia text-lg w-5 text-center"></i> Coppa Italia
+                </button>
+                <button onclick="showTab('champions')" id="btn-champions" class="tab-btn w-full text-left px-4 py-3 rounded-xl flex items-center gap-3">
+                    <i class="fanta-champions-league text-lg w-5 text-center"></i> Champions
+                </button>
+                <button onclick="showTab('europa-league')" id="btn-europa-league" class="tab-btn w-full text-left px-4 py-3 rounded-xl flex items-center gap-3">
+                    <i class="fanta-europa-league text-lg w-5 text-center"></i> Europa League
+                </button>
+                <button onclick="showTab('highlander')" id="btn-highlander" class="tab-btn w-full text-left px-4 py-3 rounded-xl flex items-center gap-3">
+                    <div class="icon-highlander w-5 h-5 text-slate-300"></div> Highlander
+                </button>
+                <button onclick="showTab('supercoppa-italiana')" id="btn-supercoppa-italiana" class="tab-btn w-full text-left px-4 py-3 rounded-xl flex items-center gap-3">
+                    <i class="fanta-supercoppa-italiana text-lg w-5 text-center"></i> Supercoppa IT
+                </button>
+                <button onclick="showTab('supercoppa-europea')" id="btn-supercoppa-europea" class="tab-btn w-full text-left px-4 py-3 rounded-xl flex items-center gap-3">
+                    <i class="fanta-supercoppa-europea text-lg w-5 text-center"></i> Supercoppa EU
+                </button>
+                <button onclick="showTab('coppa-intercontinentale')" id="btn-coppa-intercontinentale" class="tab-btn w-full text-left px-4 py-3 rounded-xl flex items-center gap-3">
+                    <i class="fanta-coppa-intercontinentale text-lg w-5 text-center"></i> Intercontinentale
+                </button>
+            </div>
+        </aside>
+
+        <main class="w-full lg:w-3/4">
+
+            <div id="generali" class="tab-content active">
+                <h1 class="text-4xl font-black mb-8 text-white">Regole <span class="apple-gradient">Generali</span></h1>
+
+                <section class="glass p-8 rounded-3xl mb-8">
+                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3"><i data-lucide="coins" class="text-sky-400"></i> Rosa e Risorse</h2>
+                    <div class="budget-hero p-6 rounded-2xl flex items-center gap-6 mb-8 bg-sky-500/10 border border-sky-500/20">
+                        <div class="text-5xl font-black apple-gradient">500</div>
+                        <div><p class="text-sky-400 font-bold uppercase tracking-widest text-sm">FantaMilioni</p><p class="text-slate-400 text-sm">Budget iniziale per ogni fantasquadra.</p></div>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-white/5 p-5 rounded-2xl text-center border border-white/5"><i data-lucide="hand" class="mx-auto text-yellow-400 mb-2"></i><p class="font-bold text-sm">Portieri</p><span class="text-xs text-slate-500">1 - 15</span></div>
+                        <div class="bg-white/5 p-5 rounded-2xl text-center border border-white/5"><i data-lucide="shield-half" class="mx-auto text-green-400 mb-2"></i><p class="font-bold text-sm">Difensori</p><span class="text-xs text-slate-500">6 - 25</span></div>
+                        <div class="bg-white/5 p-5 rounded-2xl text-center border border-white/5"><i data-lucide="compass" class="mx-auto text-blue-400 mb-2"></i><p class="font-bold text-sm">Centrocamp.</p><span class="text-xs text-slate-500">6 - 25</span></div>
+                        <div class="bg-white/5 p-5 rounded-2xl text-center border border-white/5"><i data-lucide="crosshair" class="mx-auto text-red-400 mb-2"></i><p class="font-bold text-sm">Attaccanti</p><span class="text-xs text-slate-500">4 - 25</span></div>
+                    </div>
+                </section>
+
+                <section class="glass p-8 rounded-3xl mb-8">
+                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3"><i data-lucide="layout-dashboard" class="text-sky-400"></i> Formazioni</h2>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-full text-xs">352</span><span class="bg-white/5 border border-white/10 px-3 py-1 rounded-full text-xs">343</span><span class="bg-white/5 border border-white/10 px-3 py-1 rounded-full text-xs">451</span><span class="bg-white/5 border border-white/10 px-3 py-1 rounded-full text-xs">442</span><span class="bg-white/5 border border-white/10 px-3 py-1 rounded-full text-xs">433</span><span class="bg-white/5 border border-white/10 px-3 py-1 rounded-full text-xs">532</span><span class="bg-white/5 border border-white/10 px-3 py-1 rounded-full text-xs">541</span><span class="bg-white/5 border border-white/10 px-3 py-1 rounded-full text-xs">631</span>
+                    </div>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-300">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="text-sky-400 w-4 h-4"></i> Cambio Modulo Libero</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="text-sky-400 w-4 h-4"></i> Panchina Lunga (Tutta la rosa)</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="text-sky-400 w-4 h-4"></i> Funzionalità Switch Attiva</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="text-sky-400 w-4 h-4"></i> Modificatore Difesa e Capitano</li>
+                    </ul>
+
+                    <div class="mt-8 pt-6 border-t border-white/10">
+                        <h3 class="text-red-400 font-bold mb-4 flex items-center gap-2 text-sm uppercase tracking-widest"><i data-lucide="alert-triangle" class="w-4 h-4"></i> Penalizzazioni Formazione</h3>
+                        <div class="bg-red-500/5 border border-red-500/10 p-5 rounded-2xl text-sm text-slate-300">
+                            <p class="mb-3"><strong class="text-white">Mancato inserimento della formazione dopo un bonus di 1 partita:</strong></p>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Penalizzazione immediata di <strong>35 fantapunti</strong> nella giornata in questione, senza punti in classifica (l'avversario deve però segnare per vincere).</li>
+                                <li>Multa di <strong>5 euro</strong>, dopo la franchigia di 2 partite, senza punti in classifica.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="glass p-8 rounded-3xl mb-8">
+                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3"><i data-lucide="zap" class="text-sky-400"></i> Punteggi e Bonus</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-green-500/5 p-6 rounded-2xl border border-green-500/10">
+                            <h3 class="text-green-400 font-bold mb-4 flex items-center gap-2 text-xs uppercase tracking-widest"><i data-lucide="plus-circle" class="w-4 h-4"></i> Bonus</h3>
+                            <div class="space-y-3 text-sm">
+                                <div class="flex justify-between border-b border-white/5 pb-2"><span>Goal P / D / C / A</span> <span class="font-bold text-green-400">+5 / +4 / +3.5 / +3</span></div>
+                                <div class="flex justify-between border-b border-white/5 pb-2"><span>Rigore Parato / Segnato</span> <span class="font-bold text-green-400">+3</span></div>
+                                <div class="flex justify-between border-b border-white/5 pb-2"><span>Fattore Campo</span> <span class="font-bold text-green-400">+2</span></div>
+                                <div class="flex justify-between"><span>Assist / Portiere Imbattuto</span> <span class="font-bold text-green-400">+1</span></div>
+                            </div>
+                        </div>
+                        <div class="bg-red-500/5 p-6 rounded-2xl border border-red-500/10">
+                            <h3 class="text-red-400 font-bold mb-4 flex items-center gap-2 text-xs uppercase tracking-widest"><i data-lucide="minus-circle" class="w-4 h-4"></i> Malus</h3>
+                            <div class="space-y-3 text-sm">
+                                <div class="flex justify-between border-b border-white/5 pb-2"><span>Rigore Sbagliato</span> <span class="font-bold text-red-400">-3</span></div>
+                                <div class="flex justify-between border-b border-white/5 pb-2"><span>Autogoal</span> <span class="font-bold text-red-400">-2</span></div>
+                                <div class="flex justify-between border-b border-white/5 pb-2"><span>Goal Subito / Espulsione</span> <span class="font-bold text-red-400">-1</span></div>
+                                <div class="flex justify-between"><span>Ammonizione</span> <span class="font-bold text-red-400">-0.5</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="glass p-8 rounded-3xl mb-8">
+                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                        <i data-lucide="heart-pulse" class="text-sky-400"></i> Lista Infortunati
+                    </h2>
+                    
+                    <div class="bg-sky-500/10 border border-sky-500/20 p-4 rounded-2xl mb-6">
+                        <p class="text-sm text-sky-100 italic">
+                            <strong>NB:</strong> Dal 1 Novembre ogni Fantasquadra avrà a disposizione <strong>3 liste infortunati gratuite</strong>. 
+                            Una squadra può sostituire, senza perderne la proprietà, qualunque calciatore della rosa che sia infortunato con un calciatore libero da contratto (ovviamente dello stesso ruolo).
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-300">
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="text-white font-bold mb-2 flex items-center gap-2"><i data-lucide="stethoscope" class="w-4 h-4 text-sky-400"></i> Definizione</h4>
+                                <ul class="list-disc pl-5 space-y-1">
+                                    <li>Indisponibilità prevista di almeno <strong>due giornate intere</strong>.</li>
+                                    <li>La Presidenza darà l'ok all'operazione dopo accurata verifica.</li>
+                                    <li>Un calciatore squalificato o non tesserato in Serie A non può essere inserito.</li>
+                                    <li>Il cartellino resta di proprietà della fantasquadra.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold mb-2 flex items-center gap-2"><i data-lucide="credit-card" class="w-4 h-4 text-sky-400"></i> Costi Extra</h4>
+                                <p>L'inserimento costa <strong>15 crediti</strong> per 4 sostituzioni, detratti a titolo definitivo. Nessuna squadra può inserire un infortunato se non dispone di crediti (vietato andare in rosso).</p>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="text-white font-bold mb-2 flex items-center gap-2"><i data-lucide="refresh-cw" class="w-4 h-4 text-sky-400"></i> Reintegro</h4>
+                                <p>Riferimento unico: Fantagazzetta. Quando il giocatore torna "convocato", viene <strong>obbligatoriamente reintegrato</strong> dalla giornata successiva e il prestito torna sul mercato.</p>
+                            </div>
+                            <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                                <h4 class="text-white font-bold mb-2 flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-sky-400"></i> Modalità Richiesta</h4>
+                                <p class="text-xs">Comunicare entro le <strong>15:00 del Giovedì</strong> via mail alla Presidenza. Se c'è solo una richiesta, il venerdì mattina verrà assegnato. Non si possono usare le liste nei turni infrasettimanali.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-6 border-t border-white/10">
+                        <h4 class="text-white font-bold mb-3">Aste a Busta Chiusa e di Riparazione</h4>
+                        <ul class="list-disc pl-5 space-y-2 text-xs text-slate-400">
+                            <li><strong>Richieste Multiple:</strong> Se più squadre vogliono lo stesso sostituto, si procede con offerta a busta chiusa via mail entro le 12:00 del Venerdì. Chi vince scende di crediti.</li>
+                            <li><strong>Aste Riparazione:</strong> Un sostituto in prestito è libero di essere acquistato. Se acquistato dalla sua Fantasquadra attuale, viene reintegrato; se acquistato da un'altra Fantasquadra, viene ceduto e la prima squadra sceglie gratuitamente un nuovo sostituto.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="glass p-8 rounded-3xl">
+                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3"><i data-lucide="info" class="text-sky-400"></i> Altre Normative e Parità</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
+                        <div>
+                            <h4 class="text-sky-400 font-bold mb-3 flex items-center gap-2"><i data-lucide="list-ordered" class="w-4 h-4"></i> Criteri Parità Punti</h4>
+                            <p class="text-slate-400 mb-2">Criteri in caso di arrivo a pari merito:</p>
+                            <ol class="list-decimal pl-5 space-y-1 text-slate-300">
+                                <li>Classifica Avulsa</li>
+                                <li>Somma Punti Totale</li>
+                                <li>Goal Subiti</li>
+                                <li>Differenza Reti</li>
+                                <li>Goal Fatti</li>
+                            </ol>
+                        </div>
+                        
+                        <div class="space-y-4 text-slate-300">
+                            <div>
+                                <h4 class="text-white font-bold mb-1 flex items-center gap-2"><i data-lucide="shopping-cart" class="w-4 h-4 text-sky-400"></i> Mercato e Aste</h4>
+                                <p class="text-xs">5 Aste (Agosto/Sett., Ottobre, Dicembre, Febbraio, Aprile). Nelle aste di riparazione è possibile svincolare recuperando l'intero importo.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-white/10 grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
+                        <div class="space-y-4 text-slate-300">
+                            <div>
+                                <h4 class="text-white font-bold mb-2 flex items-center gap-2"><i data-lucide="calendar-clock" class="w-4 h-4 text-sky-400"></i> Gestione Partite</h4>
+                                <p class="text-xs mb-2"><strong class="text-sky-400">Partite Rinviate/Sospese:</strong> Se recuperate prima dell'inizio di una nuova giornata di Serie A, i voti verranno calcolati normalmente. Se il recupero verrà effettuato dopo un'altra/e giornate, verrà assegnato il <strong>6 politico</strong>.</p>
+                                <p class="text-xs"><strong class="text-sky-400">Partite su 4 giorni:</strong> Per tutte le partite spalmate su 4 giorni (es. dal giovedì alla domenica), i voti verranno calcolati normalmente.</p>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold mb-2 flex items-center gap-2"><i data-lucide="shield-alert" class="w-4 h-4 text-sky-400"></i> Amministrazione Formazione</h4>
+                                <p class="text-xs">Richiesta di supporto via mail alla Presidenza (con in copia tutti i Fanta Allenatori) entro e non oltre le <strong>ore 18 del venerdì</strong> precedente specificando la motivazione. Oltre tale orario la richiesta non sarà valida. In casi straordinari deciderà la Presidenza.</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="text-white font-bold mb-3 flex items-center gap-2"><i data-lucide="banknote" class="w-4 h-4 text-sky-400"></i> Quote d'Iscrizione</h4>
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-center bg-white/5 p-3 rounded-xl border border-white/5">
+                                    <span class="text-slate-300 text-xs">Dalla 1ª all'8ª posizione</span>
+                                    <strong class="text-white">160 FantaEuro</strong>
+                                </div>
+                                <div class="flex justify-between items-center bg-white/5 p-3 rounded-xl border border-white/5">
+                                    <span class="text-slate-300 text-xs">9ª posizione</span>
+                                    <strong class="text-white">175 FantaEuro</strong>
+                                </div>
+                                <div class="flex justify-between items-center bg-white/5 p-3 rounded-xl border border-white/5">
+                                    <span class="text-slate-300 text-xs">10ª posizione</span>
+                                    <strong class="text-white">185 FantaEuro</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div id="campionato" class="tab-content">
+                <h1 class="text-4xl font-black mb-8 text-white">Regole <span class="apple-gradient">Campionato</span></h1>
+                <section class="glass p-8 rounded-3xl">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                        <div>
+                            <h3 class="text-white font-bold mb-4 flex items-center gap-2"><i data-lucide="calendar"></i> Svolgimento</h3>
+                            <p class="text-slate-300 text-sm">35 giornate totali. Scontri diretti A/R con Fattore Campo (+2).</p>
+                        </div>
+                        <div>
+                            <h3 class="text-white font-bold mb-4 flex items-center gap-2"><i data-lucide="award"></i> Premi</h3>
+                            <div class="grid grid-cols-2 gap-2 text-xs">
+                                <div class="bg-yellow-500/10 border border-yellow-500/20 p-3 rounded-xl text-center text-yellow-400">1° Posto: <strong>450€</strong></div>
+                                <div class="bg-slate-400/10 border border-slate-400/20 p-3 rounded-xl text-center text-slate-200">2° Posto: <strong>300€</strong></div>
+                                <div class="bg-orange-800/10 border border-orange-800/20 p-3 rounded-xl text-center text-amber-500">3° Posto: <strong>200€</strong></div>
+                                <div class="bg-white/5 border border-white/10 p-3 rounded-xl text-center text-white">4° Posto: <strong>160€</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-sky-500/10 border border-sky-500/20 text-sky-100 p-4 rounded-2xl flex items-start gap-3">
+                        <i data-lucide="info" class="w-5 h-5 flex-shrink-0 mt-0.5 text-sky-400"></i>
+                        <p class="text-sm leading-relaxed"><strong class="text-sky-400">Nota Bene:</strong> In caso di parità a fine campionato, valgono i criteri presenti nella sezione <a href="#" onclick="showTab('generali')" class="underline hover:text-white transition cursor-pointer">Regole Generali</a>.</p>
+                    </div>
+                </section>
+            </div>
+
+            <div id="coppa-italia" class="tab-content">
+                <h1 class="text-4xl font-black mb-8 text-white">Coppa <span class="apple-gradient">Italia</span></h1>
+                <section class="glass p-8 rounded-3xl">
+                    
+                    <div class="flex items-center gap-4 mb-8 bg-sky-500/10 border border-sky-500/20 p-4 rounded-2xl w-fit">
+                        <i data-lucide="users" class="text-sky-400 w-6 h-6"></i>
+                        <div><p class="text-white font-bold">10 Partecipanti</p><p class="text-sky-400 text-xs">Competizione a gironi e fasi finali</p></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="text-white font-bold mb-3 flex items-center gap-2"><i data-lucide="calendar" class="w-4 h-4 text-sky-400"></i> Data di Inizio</h3>
+                                <p class="text-slate-300 text-sm">La Coppa Italia inizierà alla <strong>24esima giornata di Serie A</strong>.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-bold mb-3 flex items-center gap-2"><i data-lucide="layout-list" class="w-4 h-4 text-sky-400"></i> Svolgimento</h3>
+                                <ul class="list-disc pl-5 space-y-2 text-sm text-slate-300">
+                                    <li><strong>Fase a Gironi:</strong> 2 gironi da 5 squadre. Passano le prime 2 classificate di ogni girone.</li>
+                                    <li><strong>Semifinali:</strong> Formula incrociata Andata/Ritorno. In caso di parità vincerà la squadra con il punteggio totale dei due scontri più alto; in caso di ulteriore parità la partita verrà rigiocata.</li>
+                                    <li><strong>Finale:</strong> Gara secca <strong>senza fattore campo</strong>. In caso di pareggio vincerà la squadra con il punteggio totale più alto; in caso di ulteriore parità la partita verrà rigiocata.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-white font-bold mb-4 flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-sky-400"></i> Premi in Palio</h3>
+                            <div class="grid grid-cols-1 gap-3 text-sm">
+                                <div class="flex justify-between items-center bg-yellow-500/10 border border-yellow-500/20 p-4 rounded-xl text-yellow-400">
+                                    <span>1° Classificato</span><strong>120 FantaEuro</strong>
+                                </div>
+                                <div class="flex justify-between items-center bg-slate-400/10 border border-slate-400/20 p-4 rounded-xl text-slate-200">
+                                    <span>2° Classificato</span><strong>80 FantaEuro</strong>
+                                </div>
+                                <div class="flex justify-between items-center bg-orange-800/10 border border-orange-800/20 p-4 rounded-xl text-amber-500">
+                                    <span>3° Classificato</span><strong>40 FantaEuro</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-sky-500/10 border border-sky-500/20 text-sky-100 p-4 rounded-2xl flex items-start gap-3">
+                        <i data-lucide="info" class="w-5 h-5 flex-shrink-0 mt-0.5 text-sky-400"></i>
+                        <p class="text-sm leading-relaxed"><strong class="text-sky-400">Nota Bene:</strong> Per determinare il passaggio del girone in caso di parità, verranno presi in considerazione i criteri presenti nella sezione <a href="#" onclick="showTab('generali')" class="underline hover:text-white transition cursor-pointer">Regole Generali</a>.</p>
+                    </div>
+
+                </section>
+            </div>
+            
+            <div id="champions" class="tab-content">
+                <h1 class="text-4xl font-black mb-8 text-white">Champions <span class="apple-gradient">League</span></h1>
+                <section class="glass p-8 rounded-3xl">
+                    
+                    <div class="flex items-center gap-4 mb-8 bg-sky-500/10 border border-sky-500/20 p-4 rounded-2xl w-fit">
+                        <i data-lucide="users" class="text-sky-400 w-6 h-6"></i>
+                        <div><p class="text-white font-bold">4 Partecipanti</p><p class="text-sky-400 text-xs">Le prime 4 classificate in Campionato</p></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="text-white font-bold mb-3 flex items-center gap-2"><i data-lucide="layout-list" class="w-4 h-4 text-sky-400"></i> Svolgimento</h3>
+                                <ul class="list-disc pl-5 space-y-2 text-sm text-slate-300">
+                                    <li><strong>Fase a Girone:</strong> 1 girone da 4 squadre. I primi 2 giocheranno la finale.</li>
+                                    <li><strong>Finale:</strong> Gara secca <strong>senza fattore campo</strong>. In caso di pareggio vincerà la squadra con il punteggio totale più alto; in caso di ulteriore parità la partita verrà rigiocata.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-bold mb-3 flex items-center gap-2"><i data-lucide="calendar" class="w-4 h-4 text-sky-400"></i> Calendario Date</h3>
+                                <ul class="space-y-1 text-sm text-slate-300">
+                                    <li><span class="text-sky-400 font-bold">Giornata 1:</span> in contemporanea con la 3ª di Fantacampionato</li>
+                                    <li><span class="text-sky-400 font-bold">Giornata 2:</span> in contemporanea con la 5ª di Fantacampionato</li>
+                                    <li><span class="text-sky-400 font-bold">Giornata 3:</span> in contemporanea con la 7ª di Fantacampionato</li>
+                                    <li><span class="text-sky-400 font-bold">Giornata 4:</span> in contemporanea con la 9ª di Fantacampionato</li>
+                                    <li><span class="text-sky-400 font-bold">Giornata 5:</span> in contemporanea con la 11ª di Fantacampionato</li>
+                                    <li><span class="text-sky-400 font-bold">Giornata 6:</span> in contemporanea con la 13ª di Fantacampionato</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-white font-bold mb-4 flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-sky-400"></i> Premi in Palio</h3>
+                            <div class="grid grid-cols-1 gap-3 text-sm">
+                                <div class="flex justify-between items-center bg-yellow-500/10 border border-yellow-500/20 p-4 rounded-xl text-yellow-400">
+                                    <span>1° Classificato</span><strong>50 FantaEuro</strong>
+                                </div>
+                                <div class="flex justify-between items-center bg-slate-400/10 border border-slate-400/20 p-4 rounded-xl text-slate-200">
+                                    <span>2° Classificato</span><strong>30 FantaEuro</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-sky-500/10 border border-sky-500/20 text-sky-100 p-4 rounded-2xl flex items-start gap-3">
+                        <i data-lucide="info" class="w-5 h-5 flex-shrink-0 mt-0.5 text-sky-400"></i>
+                        <p class="text-sm leading-relaxed"><strong class="text-sky-400">Nota Bene:</strong> Per determinare il passaggio del girone in caso di parità verranno presi in considerazione i criteri presenti nella sezione <a href="#" onclick="showTab('generali')" class="underline hover:text-white transition cursor-pointer">Regole Generali</a>.</p>
+                    </div>
+
+                </section>
+            </div>
+
+            <div id="europa-league" class="tab-content">
+                <h1 class="text-4xl font-black mb-8 text-white">Europa <span class="apple-gradient">League</span></h1>
+                <section class="glass p-8 rounded-3xl">
+                    
+                    <div class="flex items-center gap-4 mb-8 bg-sky-500/10 border border-sky-500/20 p-4 rounded-2xl w-fit">
+                        <i data-lucide="users" class="text-sky-400 w-6 h-6"></i>
+                        <div><p class="text-white font-bold">4 Partecipanti</p><p class="text-sky-400 text-xs">Squadre classificate dal 5° all'8° posto in Campionato</p></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="text-white font-bold mb-3 flex items-center gap-2"><i data-lucide="layout-list" class="w-4 h-4 text-sky-400"></i> Svolgimento</h3>
+                                <ul class="list-disc pl-5 space-y-2 text-sm text-slate-300">
+                                    <li><strong>Fase a Girone:</strong> 1 girone da 4 squadre. I primi 2 giocheranno la finale.</li>
+                                    <li><strong>Finale:</strong> Gara secca <strong>senza fattore campo</strong>. In caso di pareggio vincerà la squadra con il punteggio totale più alto; in caso di ulteriore parità la partita verrà rigiocata.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-bold mb-3 flex items-center gap-2"><i data-lucide="calendar" class="w-4 h-4 text-sky-400"></i> Calendario Date</h3>
+                                <ul class="space-y-1 text-sm text-slate-300">
+                                    <li><span class="text-sky-400 font-bold">Giornata 1:</span> in contemporanea con la 4ª di Fantacampionato</li>
+                                    <li><span class="text-sky-400 font-bold">Giornata 2:</span> in contemporanea con la 6ª di Fantacampionato</li>
+                                    <li><span class="text-sky-400 font-bold">Giornata 3:</span> in contemporanea con la 8ª di Fantacampionato</li>
+                                    <li><span class="text-sky-400 font-bold">Giornata 4:</span> in contemporanea con la 10ª di Fantacampionato</li>
+                                    <li><span class="text-sky-400 font-bold">Giornata 5:</span> in contemporanea con la 12ª di Fantacampionato</li>
+                                    <li><span class="text-sky-400 font-bold">Giornata 6:</span> in contemporanea con la 14ª di Fantacampionato</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-white font-bold mb-4 flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-sky-400"></i> Premi in Palio</h3>
+                            <div class="grid grid-cols-1 gap-3 text-sm">
+                                <div class="flex justify-between items-center bg-yellow-500/10 border border-yellow-500/20 p-4 rounded-xl text-yellow-400">
+                                    <span>1° Classificato</span><strong>45 FantaEuro</strong>
+                                </div>
+                                <div class="flex justify-between items-center bg-slate-400/10 border border-slate-400/20 p-4 rounded-xl text-slate-200">
+                                    <span>2° Classificato</span><strong>25 FantaEuro</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-sky-500/10 border border-sky-500/20 text-sky-100 p-4 rounded-2xl flex items-start gap-3">
+                        <i data-lucide="info" class="w-5 h-5 flex-shrink-0 mt-0.5 text-sky-400"></i>
+                        <p class="text-sm leading-relaxed"><strong class="text-sky-400">Nota Bene:</strong> Per determinare il passaggio del girone in caso di parità verranno presi in considerazione i criteri presenti nella sezione <a href="#" onclick="showTab('generali')" class="underline hover:text-white transition cursor-pointer">Regole Generali</a>.</p>
+                    </div>
+
+                </section>
+            </div>
+
+            <div id="highlander" class="tab-content">
+                <h1 class="text-4xl font-black mb-8 text-white">Coppa <span class="apple-gradient">Highlander</span></h1>
+                <section class="glass p-8 rounded-3xl border-red-500/20">
+                    
+                    <div class="flex items-center gap-4 mb-8 bg-red-500/10 border border-red-500/20 p-4 rounded-2xl w-fit">
+                        <i data-lucide="users" class="text-red-400 w-6 h-6"></i>
+                        <div><p class="text-white font-bold">10 Partecipanti</p><p class="text-red-400 text-xs">Tutte le squadre della Lega</p></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="text-white font-bold mb-3 flex items-center gap-2"><i data-lucide="calendar" class="w-4 h-4 text-red-400"></i> Data di Inizio</h3>
+                                <p class="text-slate-300 text-sm">La Coppa Highlander inizierà alla <strong>16esima giornata di Serie A</strong>.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-bold mb-3 flex items-center gap-2"><i data-lucide="skull" class="w-4 h-4 text-red-400"></i> Svolgimento (Sopravvivenza)</h3>
+                                <p class="text-slate-300 text-sm leading-relaxed">
+                                    In ogni turno di gioco non è necessario vincere, ma sopravvivere evitando l’eliminazione. 
+                                    L’eliminazione è sancita dal <strong>punteggio di giornata più basso</strong>.<br><br>
+                                    L'ultima Fantasquadra che sopravviverà vincerà la Coppa Highlander.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-white font-bold mb-4 flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-red-400"></i> Premi in Palio</h3>
+                            <div class="grid grid-cols-1 gap-3 text-sm">
+                                <div class="flex justify-between items-center bg-yellow-500/10 border border-yellow-500/20 p-4 rounded-xl text-yellow-400">
+                                    <span>1° Classificato</span><strong>45 FantaEuro</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+
+            <div id="supercoppa-italiana" class="tab-content">
+                <h1 class="text-4xl font-black mb-8 text-white">Supercoppa <span class="apple-gradient">Italiana</span></h1>
+                <section class="glass p-8 rounded-3xl">
+                    
+                    <div class="flex items-center gap-4 mb-8 bg-sky-500/10 border border-sky-500/20 p-4 rounded-2xl w-fit">
+                        <i data-lucide="users" class="text-sky-400 w-6 h-6"></i>
+                        <div><p class="text-white font-bold">2 Partecipanti</p><p class="text-sky-400 text-xs">Vincitore Campionato vs. Vincitore Coppa Italia</p></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="text-white font-bold mb-3 flex items-center gap-2"><i data-lucide="layout-list" class="w-4 h-4 text-sky-400"></i> Svolgimento</h3>
+                                <p class="text-slate-300 text-sm leading-relaxed">
+                                    <strong>Gara secca senza fattore campo.</strong><br>
+                                    In caso di pareggio vincerà la squadra con il punteggio totale più alto; in caso di ulteriore parità la partita verrà rigiocata.
+                                </p>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-bold mb-3 flex items-center gap-2"><i data-lucide="calendar" class="w-4 h-4 text-sky-400"></i> Data</h3>
+                                <p class="text-slate-300 text-sm">In contemporanea con la <strong>1ª giornata di Fantacampionato</strong>.</p>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-white font-bold mb-4 flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-sky-400"></i> Premi in Palio</h3>
+                            <div class="grid grid-cols-1 gap-3 text-sm">
+                                <div class="flex justify-between items-center bg-yellow-500/10 border border-yellow-500/20 p-4 rounded-xl text-yellow-400">
+                                    <span>1° Classificato</span><strong>25 FantaEuro</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+
+            <div id="supercoppa-europea" class="tab-content">
+                <h1 class="text-4xl font-black mb-8 text-white">Supercoppa <span class="apple-gradient">Europea</span></h1>
+                <section class="glass p-8 rounded-3xl">
+                    
+                    <div class="flex items-center gap-4 mb-8 bg-sky-500/10 border border-sky-500/20 p-4 rounded-2xl w-fit">
+                        <i data-lucide="users" class="text-sky-400 w-6 h-6"></i>
+                        <div><p class="text-white font-bold">2 Partecipanti</p><p class="text-sky-400 text-xs">Vincitore Champions League vs. Vincitore Europa League</p></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="text-white font-bold mb-3 flex items-center gap-2"><i data-lucide="layout-list" class="w-4 h-4 text-sky-400"></i> Svolgimento</h3>
+                                <p class="text-slate-300 text-sm leading-relaxed">
+                                    <strong>Gara secca senza fattore campo.</strong><br>
+                                    In caso di pareggio vincerà la squadra con il punteggio totale più alto; in caso di ulteriore parità la partita verrà rigiocata.
+                                </p>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-bold mb-3 flex items-center gap-2"><i data-lucide="calendar" class="w-4 h-4 text-sky-400"></i> Data</h3>
+                                <p class="text-slate-300 text-sm">In contemporanea con la <strong>2ª giornata di Fantacampionato</strong>.</p>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-white font-bold mb-4 flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-sky-400"></i> Premi in Palio</h3>
+                            <div class="grid grid-cols-1 gap-3 text-sm">
+                                <div class="flex justify-between items-center bg-yellow-500/10 border border-yellow-500/20 p-4 rounded-xl text-yellow-400">
+                                    <span>1° Classificato</span><strong>30 FantaEuro</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+
+            <div id="coppa-intercontinentale" class="tab-content">
+                <h1 class="text-4xl font-black mb-8 text-white">Coppa <span class="apple-gradient">Intercontinentale</span></h1>
+                <section class="glass p-8 rounded-3xl">
+                    
+                    <div class="flex items-center gap-4 mb-8 bg-sky-500/10 border border-sky-500/20 p-4 rounded-2xl w-fit">
+                        <i data-lucide="users" class="text-sky-400 w-6 h-6"></i>
+                        <div><p class="text-white font-bold">10 Partecipanti</p><p class="text-sky-400 text-xs">Tutte le squadre della Lega</p></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="text-white font-bold mb-3 flex items-center gap-2"><i data-lucide="calendar" class="w-4 h-4 text-sky-400"></i> Data di Inizio</h3>
+                                <p class="text-slate-300 text-sm">La Coppa Intercontinentale inizierà in contemporanea con la <strong>Coppa Italia</strong>.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-bold mb-3 flex items-center gap-2"><i data-lucide="layout-list" class="w-4 h-4 text-sky-400"></i> Svolgimento</h3>
+                                <ul class="list-disc pl-5 space-y-2 text-sm text-slate-300">
+                                    <li><strong>Ottavi:</strong> Scontri A/R con fattore campo. Passano le 5 vincenti + la <strong>migliore perdente</strong> (squadra con fantapunti più alti).</li>
+                                    <li><strong>Quarti:</strong> Scontri A/R con fattore campo. Passano le 3 vincenti + la <strong>migliore perdente</strong> (squadra con fantapunti più alti).</li>
+                                    <li><strong>Semifinali:</strong> Scontri A/R con fattore campo. Passano le 2 vincenti.</li>
+                                    <li><strong>Finale:</strong> Scontro secco <strong>senza fattore campo</strong>.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-white font-bold mb-4 flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-sky-400"></i> Premi in Palio</h3>
+                            <div class="grid grid-cols-1 gap-3 text-sm">
+                                <div class="flex justify-between items-center bg-yellow-500/10 border border-yellow-500/20 p-4 rounded-xl text-yellow-400">
+                                    <span>1° Classificato</span><strong>40 FantaEuro</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            document.getElementById('btn-' + tabId).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
