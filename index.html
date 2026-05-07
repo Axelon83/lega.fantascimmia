@@ -14,7 +14,7 @@
             theme: {
                 extend: {
                     colors: {
-                        slate: { 950: '#020617' },
+                        slate: { 950: '#020617', 900: '#0f172a', 800: '#1e293b' },
                     }
                 }
             }
@@ -32,6 +32,10 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        /* Custom Table Styling */
+        .glass-table th { background: rgba(255, 255, 255, 0.05); }
+        .glass-table tr { border-bottom: 1px solid rgba(255, 255, 255, 0.05); transition: background 0.3s; }
+        .glass-table tr:hover { background: rgba(255, 255, 255, 0.02); }
     </style>
 </head>
 
@@ -60,39 +64,124 @@
                  class="w-40 md:w-56 h-auto mb-8 drop-shadow-[0_10px_35px_rgba(56,189,248,0.35)]" 
                  data-aos="zoom-in" data-aos-delay="200" data-aos-duration="1200">
 
-            <span class="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-widest text-sky-400 uppercase bg-sky-400/10 rounded-full">
+            <span class="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-widest text-sky-400 uppercase bg-sky-400/10 rounded-full border border-sky-400/20">
                 Stagione 2024/2025
             </span>
             <h1 class="text-6xl md:text-8xl font-black mb-6 tracking-tight">
                 La gloria è <br><span class="apple-gradient">questione di millimetri.</span>
             </h1>
             <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-10">
-                Benvenuti nella nuova era della Lega FantaScimmia. Statistiche in tempo reale, 
-                design pulito e competizione ai massimi livelli.
+                L'archivio definitivo della Lega FantaScimmia. Dal 2008 dominando i campionati con statistiche, rose e trofei aggiornati in tempo reale.
             </p>
             <div class="flex flex-col md:flex-row gap-4 justify-center">
-                <a href="#stats" class="px-8 py-4 bg-sky-500 hover:bg-sky-400 text-white rounded-full font-bold transition-all shadow-lg shadow-sky-500/20">
-                    Guarda Classifica
+                <a href="#stats" class="px-8 py-4 bg-sky-500 hover:bg-sky-400 text-white rounded-full font-bold transition-all shadow-[0_0_20px_rgba(14,165,233,0.3)] hover:shadow-[0_0_30px_rgba(14,165,233,0.5)]">
+                    Analizza Statistiche
                 </a>
-                <a href="regolamento.html" class="px-8 py-4 glass hover:bg-white/10 rounded-full font-bold transition-all">
-                    Leggi Regolamento
+                <a href="albo.html" class="px-8 py-4 glass hover:bg-white/10 rounded-full font-bold transition-all">
+                    Scopri L'Albo D'Oro
                 </a>
             </div>
         </div>
     </section>
 
-    <section id="stats" class="py-24 bg-slate-900/50">
+    <section id="stats" class="py-24 bg-slate-900/50 border-y border-white/5">
         <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-black text-white tracking-tight">I Numeri <span class="apple-gradient">Della Lega</span></h2>
+                <p class="text-slate-400 mt-2">Dati aggregati storici dal 2016 ad oggi</p>
+            </div>
+            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="quick-stats">
+                <div class="glass p-8 rounded-3xl hover:-translate-y-2 transition-transform duration-300" data-aos="fade-up" data-aos-delay="0">
+                    <div class="bg-yellow-500/10 w-14 h-14 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="trophy" class="text-yellow-400 w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-slate-400 text-xs font-bold uppercase tracking-widest">Club Più Titolato</h4>
+                    <p class="text-4xl font-black mt-2 text-white tracking-tighter">Delu Team</p>
+                    <p class="text-yellow-400 font-bold text-sm mt-1">19 Trofei vinti</p>
                 </div>
+                <div class="glass p-8 rounded-3xl hover:-translate-y-2 transition-transform duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-sky-500/10 w-14 h-14 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="bar-chart-2" class="text-sky-400 w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-slate-400 text-xs font-bold uppercase tracking-widest">Record Fantapunti</h4>
+                    <p class="text-4xl font-black mt-2 text-white tracking-tighter">Patatinaikos</p>
+                    <p class="text-sky-400 font-bold text-sm mt-1">21.387 Punti All-Time</p>
+                </div>
+                <div class="glass p-8 rounded-3xl hover:-translate-y-2 transition-transform duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-rose-500/10 w-14 h-14 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="swords" class="text-rose-400 w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-slate-400 text-xs font-bold uppercase tracking-widest">Partite Giocate</h4>
+                    <p class="text-4xl font-black mt-2 text-white tracking-tighter">287</p>
+                    <p class="text-rose-400 font-bold text-sm mt-1">Scontri diretti per squadra</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <section class="py-24">
-        <div class="container mx-auto px-6 max-w-4xl">
-            <div class="glass p-8 rounded-3xl" data-aos="zoom-in">
-                <h3 class="text-2xl font-bold mb-8">Andamento Punti Leader</h3>
-                <canvas id="mainChart" width="400" height="200"></canvas>
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                
+                <div class="glass p-8 rounded-3xl flex flex-col" data-aos="fade-right">
+                    <h3 class="text-2xl font-bold mb-2 text-white">Bacheca Trofei (Top 5)</h3>
+                    <p class="text-sm text-slate-400 mb-8">Le squadre con più vittorie totali nell'Albo d'Oro.</p>
+                    <div class="flex-grow w-full min-h-[300px]">
+                        <canvas id="trophiesChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="glass p-8 rounded-3xl" data-aos="fade-left">
+                    <h3 class="text-2xl font-bold mb-2 text-white flex items-center gap-3"><i data-lucide="medal" class="text-yellow-400"></i> Ranking All-Time</h3>
+                    <p class="text-sm text-slate-400 mb-6">Classifica per vittorie negli scontri diretti dal 2016.</p>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm glass-table">
+                            <thead>
+                                <tr class="text-slate-400 uppercase tracking-widest text-[10px]">
+                                    <th class="p-4 rounded-tl-xl">Pos</th>
+                                    <th class="p-4">Squadra</th>
+                                    <th class="p-4 text-center">Vittorie</th>
+                                    <th class="p-4 text-right rounded-tr-xl">FantaPunti</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-white font-medium">
+                                <tr>
+                                    <td class="p-4 text-yellow-400 font-black">1</td>
+                                    <td class="p-4 flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-slate-800 bg-[url('images/loghi/Patatinaikos.png')] bg-cover"></div> Patatinaikos</td>
+                                    <td class="p-4 text-center text-sky-400 font-bold">126</td>
+                                    <td class="p-4 text-right">21.387</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 text-slate-300 font-black">2</td>
+                                    <td class="p-4 flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-slate-800 bg-[url('images/loghi/ManzoTeam.jpg')] bg-cover"></div> ManzoTeam</td>
+                                    <td class="p-4 text-center text-sky-400 font-bold">117</td>
+                                    <td class="p-4 text-right">21.237</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 text-amber-600 font-black">3</td>
+                                    <td class="p-4 flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-slate-800 bg-[url('images/loghi/Spacca.png')] bg-cover"></div> Spacca CFC</td>
+                                    <td class="p-4 text-center text-sky-400 font-bold">116</td>
+                                    <td class="p-4 text-right">21.229</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 text-slate-500 font-black">4</td>
+                                    <td class="p-4 flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-slate-800 bg-[url('images/loghi/DeluTeam.jpg')] bg-cover"></div> Delu Team</td>
+                                    <td class="p-4 text-center text-sky-400 font-bold">113</td>
+                                    <td class="p-4 text-right">21.300</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 text-slate-500 font-black">5</td>
+                                    <td class="p-4 flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-slate-800 bg-[url('images/loghi/MamboFC.png')] bg-cover"></div> Mambo FC</td>
+                                    <td class="p-4 text-center text-sky-400 font-bold">113</td>
+                                    <td class="p-4 text-right">21.058</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -105,104 +194,63 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <script>
-        // Inizializza AOS (Animazioni)
-AOS.init({ 
-    duration: 1000,
-    once: true,
-    easing: 'ease-out-cubic'
-});
+        // Inizializza Animazioni
+        AOS.init({ duration: 1000, once: true, easing: 'ease-out-cubic' });
+        lucide.createIcons();
 
-// Dati di esempio (Fallback) se il JSON non carica
-const defaultData = {
-    "statistiche_rapide": [
-        { "label": "Media Gol", "valore": "2.8", "icon": "zap" },
-        { "label": "Premi Totali", "valore": "€1.500", "icon": "coins" },
-        { "label": "Partecipanti", "valore": "10", "icon": "users" }
-    ]
-};
+        // Grafico Dati Reali (Estratti dal CSV Albo D'Oro)
+        document.addEventListener('DOMContentLoaded', () => {
+            const ctx = document.getElementById('trophiesChart').getContext('2d');
+            
+            // Dati statici prelevati dai tuoi file Excel
+            const teamNames = ['Delu Team', 'Patatinaikos', 'Mambo FC', 'Manzoteam', 'Mojito FC'];
+            const trophiesData = [19, 14, 12, 10, 9]; 
 
-async function loadData() {
-    try {
-        const response = await fetch('dati.json');
-        if (!response.ok) throw new Error("File JSON non trovato");
-        const data = await response.json();
-        console.log("Dati caricati con successo:", data);
-        renderStats(data);
-    } catch (error) {
-        console.warn("Caricamento JSON fallito, uso dati di default. Errore:", error.message);
-        renderStats(defaultData);
-    }
-    renderChart(); // Avvia comunque il grafico
-}
-
-function renderStats(data) {
-    const container = document.getElementById('quick-stats');
-    if (!data.statistiche_rapide) return;
-
-    container.innerHTML = data.statistiche_rapide.map((stat, index) => `
-        <div class="glass p-8 rounded-3xl hover:scale-105 transition-all duration-500 group" 
-             data-aos="fade-up" data-aos-delay="${index * 150}">
-            <div class="bg-sky-500/10 w-14 h-14 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-sky-500/20 transition-colors">
-                <i data-lucide="${stat.icon}" class="text-sky-400 w-8 h-8"></i>
-            </div>
-            <h4 class="text-slate-400 text-xs font-bold uppercase tracking-widest">${stat.label}</h4>
-            <p class="text-5xl font-black mt-2 text-white tracking-tighter">${stat.valore}</p>
-        </div>
-    `).join('');
-    
-    // Re-inizializza le icone Lucide dopo aver iniettato l'HTML
-    lucide.createIcons();
-}
-
-function renderChart() {
-    const ctx = document.getElementById('mainChart');
-    if (!ctx) return;
-
-    new Chart(ctx.getContext('2d'), {
-        type: 'line',
-        data: {
-            labels: ['G1', 'G5', 'G10', 'G15', 'G20', 'G25', 'G30'],
-            datasets: [{
-                label: 'Punti Leader',
-                data: [5, 12, 28, 40, 52, 65, 75],
-                borderColor: '#38bdf8',
-                borderWidth: 4,
-                pointBackgroundColor: '#38bdf8',
-                pointRadius: 0,
-                pointHoverRadius: 6,
-                tension: 0.4,
-                fill: true,
-                backgroundColor: (context) => {
-                    const chart = context.chart;
-                    const {ctx, chartArea} = chart;
-                    if (!chartArea) return null;
-                    const gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
-                    gradient.addColorStop(0, 'rgba(56, 189, 248, 0)');
-                    gradient.addColorStop(1, 'rgba(56, 189, 248, 0.2)');
-                    return gradient;
-                }
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: { legend: { display: false } },
-            scales: {
-                y: { 
-                    grid: { color: 'rgba(255,255,255,0.05)', drawBorder: false },
-                    ticks: { color: '#64748b', font: { size: 12 } }
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: teamNames,
+                    datasets: [{
+                        label: 'Trofei Totali Vinti',
+                        data: trophiesData,
+                        backgroundColor: [
+                            'rgba(56, 189, 248, 0.8)', // Sky
+                            'rgba(250, 204, 21, 0.8)', // Yellow
+                            'rgba(74, 222, 128, 0.8)', // Green
+                            'rgba(244, 63, 94, 0.8)',  // Rose
+                            'rgba(168, 85, 247, 0.8)'  // Purple
+                        ],
+                        borderRadius: 8,
+                        borderSkipped: false
+                    }]
                 },
-                x: { 
-                    grid: { display: false },
-                    ticks: { color: '#64748b', font: { size: 12 } }
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { 
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                            titleFont: { size: 14, family: 'sans-serif' },
+                            bodyFont: { size: 14, weight: 'bold' },
+                            padding: 12,
+                            cornerRadius: 8
+                        }
+                    },
+                    scales: {
+                        y: { 
+                            beginAtZero: true,
+                            grid: { color: 'rgba(255,255,255,0.05)', drawBorder: false },
+                            ticks: { color: '#94a3b8', font: { size: 12 }, stepSize: 5 }
+                        },
+                        x: { 
+                            grid: { display: false },
+                            ticks: { color: '#94a3b8', font: { size: 11, weight: '600' } }
+                        }
+                    }
                 }
-            }
-        }
-    });
-}
-
-// Avvio al caricamento della pagina
-document.addEventListener('DOMContentLoaded', loadData);
+            });
+        });
     </script>
 </body>
 </html>
