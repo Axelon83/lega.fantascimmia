@@ -190,7 +190,7 @@
     </main>
 
     <footer class="py-12 border-t border-white/5 text-center text-slate-500 text-sm">
-        <p>&copy; 2024 FantaScimmia Lega. Hosted on GitHub Pages.</p>
+        <p>&copy; 2026 FantaScimmia Lega. Hosted on GitHub Pages.</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -199,19 +199,19 @@
         lucide.createIcons();
 
         // ----------------------------------------------------------------
-        // DATASET AGGIORNATO (Dati reali estratti dai CSV forniti)
+        // DATASET AGGIORNATO (Dati reali estratti dai CSV 2016-2026)
         // ----------------------------------------------------------------
         const statsDB = {
-            "patatinaikos": { name: "Patatinaikos", avg: "74.5", bonus: 21387, luck: "+12.4", clean: 78, amon: 325, goal: [65, 185, 212], rig: 62, fails: 12, bench: 24, mod: 145, tagline: "Costanza leggendaria" },
-            "delu": { name: "Delu Team", avg: "74.2", bonus: 21300, luck: "+5.1", clean: 89, amon: 293, goal: [62, 111, 242], rig: 69, fails: 19, bench: 16, mod: 167, tagline: "Il club più titolato" },
-            "manzo": { name: "Manzo Team", avg: "73.9", bonus: 21237, luck: "-2.3", clean: 55, amon: 339, goal: [47, 151, 256], rig: 75, fails: 16, bench: 13, mod: 110, tagline: "Potenza offensiva" },
-            "spacca": { name: "Spacca CFC", avg: "73.9", bonus: 21229, luck: "+8.9", clean: 71, amon: 310, goal: [71, 120, 222], rig: 54, fails: 11, bench: 11, mod: 134, tagline: "Equilibrio tattico" },
-            "mambo": { name: "Mambo FC", avg: "73.3", bonus: 21058, luck: "-4.5", clean: 84, amon: 294, goal: [46, 125, 236], rig: 40, fails: 11, bench: 18, mod: 100, tagline: "Sempre competitivi" },
-            "mojito": { name: "Mojito FC", avg: "72.4", bonus: 20790, luck: "+14.3", clean: 67, amon: 226, goal: [34, 119, 210], rig: 38, fails: 14, bench: 34, mod: 92, tagline: "Maestri della sorte" },
-            "suerte": { name: "RCD Suerte", avg: "73.1", bonus: 18500, luck: "+3.2", clean: 60, amon: 245, goal: [28, 98, 185], rig: 45, fails: 10, bench: 15, mod: 85, tagline: "Grinta e cuore" },
-            "sampmania": { name: "Sampmania", avg: "71.8", bonus: 17980, luck: "-6.7", clean: 52, amon: 312, goal: [42, 105, 178], rig: 30, fails: 14, bench: 22, mod: 78, tagline: "Passione pura" },
-            "trofie": { name: "Le Trofie 'Nfojate", avg: "72.1", bonus: 16028, luck: "-1.1", clean: 48, amon: 287, goal: [39, 88, 156], rig: 32, fails: 8, bench: 19, mod: 65, tagline: "Sapore di sfida" },
-            "dogs": { name: "Straw Dogs", avg: "71.4", bonus: 10499, luck: "+7.8", clean: 34, amon: 198, goal: [22, 75, 120], rig: 18, fails: 6, bench: 9, mod: 40, tagline: "Cani sciolti" }
+            "patatinaikos": { name: "Patatinaikos", avg: "73.3", bonus: 1656, luck: "-1.1", clean: 102, amon: 392, goal: [56, 157, 209], rig: 40, fails: 10, bench: 24, mod: 176, tagline: "Costanza leggendaria" },
+            "delu": { name: "Delu Team", avg: "74.3", bonus: 1835, luck: "+1.4", clean: 101, amon: 371, goal: [65, 127, 278], rig: 82, fails: 24, bench: 18, mod: 233, tagline: "Il club più titolato" },
+            "manzo": { name: "Manzo Team", avg: "74.2", bonus: 1848, luck: "-7.4", clean: 68, amon: 426, goal: [62, 159, 284], rig: 84, fails: 18, bench: 14, mod: 170, tagline: "Potenza offensiva" },
+            "spacca": { name: "Spacca CFC", avg: "73.1", bonus: 1664, luck: "+13.4", clean: 95, amon: 452, goal: [53, 158, 237], rig: 41, fails: 19, bench: 21, mod: 79, tagline: "Equilibrio tattico" },
+            "mambo": { name: "Mambo FC", avg: "73.2", bonus: 1750, luck: "+1.2", clean: 101, amon: 380, goal: [53, 143, 259], rig: 42, fails: 13, bench: 26, mod: 104, tagline: "Sempre competitivi" },
+            "mojito": { name: "Mojito FC", avg: "72.6", bonus: 1507, luck: "+4.3", clean: 95, amon: 410, goal: [43, 130, 224], rig: 41, fails: 7, bench: 21, mod: 163, tagline: "Maestri della sorte" },
+            "suerte": { name: "RCD Suerte", avg: "73.6", bonus: 1663, luck: "+0.0", clean: 95, amon: 379, goal: [56, 83, 241], rig: 51, fails: 16, bench: 18, mod: 233, tagline: "Grinta e cuore" },
+            "sampmania": { name: "Sampmania", avg: "72.8", bonus: 1594, luck: "+2.2", clean: 104, amon: 437, goal: [42, 159, 222], rig: 69, fails: 17, bench: 25, mod: 89, tagline: "Passione pura" },
+            "trofie": { name: "Le Trofie 'Nfojate", avg: "73.9", bonus: 1736, luck: "-3.8", clean: 81, amon: 426, goal: [65, 128, 267], rig: 63, fails: 10, bench: 28, mod: 279, tagline: "Sapore di sfida" },
+            "dogs": { name: "Straw Dogs", avg: "72.9", bonus: 1582, luck: "+6.0", clean: 75, amon: 387, goal: [40, 121, 194], rig: 41, fails: 10, bench: 16, mod: 141, tagline: "Cani sciolti" }
         };
 
         function loadLeaderboards() {
@@ -268,7 +268,7 @@
             document.getElementById('dash-clean').textContent = team.clean;
             document.getElementById('dash-mod').textContent = team.mod;
             
-            const logoPath = `images/loghi/${team.name.replace(" ", "")}.png`;
+            const logoPath = `images/loghi/${team.name.replace(/ /g, "")}.png`;
             document.getElementById('dash-logo').innerHTML = `<img src="${logoPath}" class="w-full h-full object-contain" onerror="this.src='images/Monkey_Logo.png'">`;
 
             renderBar('bar-dif', 'Difesa', team.goal[0], 100, 'bg-green-500');
