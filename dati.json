@@ -1,14 +1,84 @@
 {
-  "palmares_squadre": {
-    "delu": { "campionato": 6, "coppa_italia": 3, "champions": 4, "europa_league": 2, "supercoppa_eu": 1, "supercoppa_it": 4, "intercontinentale": 0, "highlander": 1 },
-    "trofie": { "campionato": 0, "coppa_italia": 1, "champions": 0, "europa_league": 2, "supercoppa_eu": 1, "supercoppa_it": 0, "intercontinentale": 0, "highlander": 0 },
-    "mambo": { "campionato": 1, "coppa_italia": 2, "champions": 1, "europa_league": 2, "supercoppa_eu": 2, "supercoppa_it": 2, "intercontinentale": 2, "highlander": 1 },
-    "manzo": { "campionato": 0, "coppa_italia": 4, "champions": 0, "europa_league": 2, "supercoppa_eu": 2, "supercoppa_it": 2, "intercontinentale": 2, "highlander": 0 },
-    "mojito": { "campionato": 0, "coppa_italia": 2, "champions": 1, "europa_league": 1, "supercoppa_eu": 1, "supercoppa_it": 1, "intercontinentale": 3, "highlander": 0 },
-    "patatinaikos": { "campionato": 5, "coppa_italia": 3, "champions": 1, "europa_league": 2, "supercoppa_eu": 1, "supercoppa_it": 2, "intercontinentale": 1, "highlander": 0 },
-    "suerte": { "campionato": 2, "coppa_italia": 0, "champions": 1, "europa_league": 0, "supercoppa_eu": 1, "supercoppa_it": 1, "intercontinentale": 1, "highlander": 0 },
-    "sampmania": { "campionato": 1, "coppa_italia": 0, "champions": 2, "europa_league": 1, "supercoppa_eu": 1, "supercoppa_it": 1, "intercontinentale": 0, "highlander": 0 },
-    "spacca": { "campionato": 1, "coppa_italia": 3, "champions": 2, "europa_league": 0, "supercoppa_eu": 0, "supercoppa_it": 2, "intercontinentale": 0, "highlander": 1 },
-    "dogs": { "campionato": 1, "coppa_italia": 0, "champions": 3, "europa_league": 1, "supercoppa_eu": 2, "supercoppa_it": 0, "intercontinentale": 0, "highlander": 0 }
+  "squadre": {
+    "patatinaikos": {
+      "id": "patatinaikos", "name": "Patatinaikos", "tagline": "Costanza leggendaria",
+      "logo": "images/loghi/Patatinaikos.png",
+      "presidente": "Giori Andrea", "stadio": "La Patatera", "anno": "2011",
+      "storia": "<p>Il Patatinaikos viene fondato nel 2011 sulle ceneri dei Debosciati, con l’immissione di capitali freschi da parte di figure di spicco. Questo porta alla costruzione della leggendaria 'Patatera'. Squadra che detta legge entro i confini nazionali, deve migliorare sotto il profilo internazionale.</p>",
+      "avg": "73.3", "bonus": 1656, "luck": -1.1, "clean": 102, "amon": 392, "goal": [56, 157, 209], "rig": 40, "fails": 10, "bench": 24, "mod": 176,
+      "palmares": { "campionato": 5, "coppa_italia": 3, "champions": 1, "europa_league": 2, "supercoppa_eu": 1, "supercoppa_it": 2, "intercontinentale": 1, "highlander": 0 }
+    },
+    "delu": {
+      "id": "delu", "name": "Delu Team", "tagline": "Il club più titolato",
+      "logo": "images/loghi/DeluTeam.jpg",
+      "presidente": "De Lucia Luca", "stadio": "Tommy's Stadium", "anno": "2008",
+      "storia": "<p class='italic text-lg text-white'>...Il club più titolato della lega…..What Else?</p>",
+      "avg": "74.3", "bonus": 1835, "luck": 1.4, "clean": 101, "amon": 371, "goal": [65, 127, 278], "rig": 82, "fails": 24, "bench": 18, "mod": 233,
+      "palmares": { "campionato": 6, "coppa_italia": 3, "champions": 4, "europa_league": 2, "supercoppa_eu": 1, "supercoppa_it": 4, "intercontinentale": 0, "highlander": 1 }
+    },
+    "manzo": {
+      "id": "manzo", "name": "Manzo Team", "tagline": "Potenza offensiva",
+      "logo": "images/loghi/ManzoTeam2025.jpg",
+      "presidente": "Amaranto Stefano", "stadio": "Manzo Stadium", "anno": "2014",
+      "storia": "<p>ManzoTeam FoodBall Club risorge dopo 10 anni rientrando in una Lega molto competitiva. Presidente scoppiettante e vulcanico, non teme l'avversario. Dopo il primo anno di ambientamento, ora è pronto a dare battaglia.</p>",
+      "avg": "74.2", "bonus": 1848, "luck": -7.4, "clean": 68, "amon": 426, "goal": [62, 159, 284], "rig": 84, "fails": 18, "bench": 14, "mod": 170,
+      "palmares": { "campionato": 0, "coppa_italia": 4, "champions": 0, "europa_league": 2, "supercoppa_eu": 2, "supercoppa_it": 2, "intercontinentale": 2, "highlander": 0 }
+    },
+    "spacca": {
+      "id": "spacca", "name": "Spacca CFC", "tagline": "Equilibrio tattico",
+      "logo": "images/loghi/Spacca.png",
+      "presidente": "Tagliavacche Marco", "stadio": "Stadium", "anno": "2010",
+      "storia": "<p>Nessuna storia disponibile al momento.</p>",
+      "avg": "73.1", "bonus": 1664, "luck": 13.4, "clean": 95, "amon": 452, "goal": [53, 158, 237], "rig": 41, "fails": 19, "bench": 21, "mod": 79,
+      "palmares": { "campionato": 1, "coppa_italia": 3, "champions": 2, "europa_league": 0, "supercoppa_eu": 0, "supercoppa_it": 2, "intercontinentale": 0, "highlander": 1 }
+    },
+    "mambo": {
+      "id": "mambo", "name": "Mambo FC", "tagline": "Sempre competitivi",
+      "logo": "images/loghi/MamboFC.png",
+      "presidente": "Garbarino Matteo", "stadio": "Stadium", "anno": "2015",
+      "storia": "<p>Nessuna storia disponibile al momento.</p>",
+      "avg": "73.2", "bonus": 1750, "luck": 1.2, "clean": 101, "amon": 380, "goal": [53, 143, 259], "rig": 42, "fails": 13, "bench": 26, "mod": 104,
+      "palmares": { "campionato": 1, "coppa_italia": 2, "champions": 1, "europa_league": 2, "supercoppa_eu": 2, "supercoppa_it": 2, "intercontinentale": 2, "highlander": 1 }
+    },
+    "mojito": {
+      "id": "mojito", "name": "Mojito FC", "tagline": "Maestri della sorte",
+      "logo": "images/loghi/MojitoFC.png",
+      "presidente": "Porta Matteo", "stadio": "Mojito Stadium", "anno": "2011",
+      "storia": "<p>Mojito F.C. nasce nel 2011 dopo un'importante vacanza a Formentera grazie ad una nuova cordata di investitori. I tifosi sono già in visibilio dopo che il Presidente ha dichiarato che la squadra punta al triplete.</p>",
+      "avg": "72.6", "bonus": 1507, "luck": 4.3, "clean": 95, "amon": 410, "goal": [43, 130, 224], "rig": 41, "fails": 7, "bench": 21, "mod": 163,
+      "palmares": { "campionato": 0, "coppa_italia": 2, "champions": 1, "europa_league": 1, "supercoppa_eu": 1, "supercoppa_it": 1, "intercontinentale": 3, "highlander": 0 }
+    },
+    "suerte": {
+      "id": "suerte", "name": "RCD Suerte", "tagline": "Grinta e cuore",
+      "logo": "images/loghi/suerte.png",
+      "presidente": "Colladon Gigi", "stadio": "Stadium", "anno": "2018",
+      "storia": "<p>Nessuna storia disponibile al momento.</p>",
+      "avg": "73.6", "bonus": 1663, "luck": 0.0, "clean": 95, "amon": 379, "goal": [56, 83, 241], "rig": 51, "fails": 16, "bench": 18, "mod": 233,
+      "palmares": { "campionato": 2, "coppa_italia": 0, "champions": 1, "europa_league": 0, "supercoppa_eu": 1, "supercoppa_it": 1, "intercontinentale": 1, "highlander": 0 }
+    },
+    "sampmania": {
+      "id": "sampmania", "name": "Sampmania", "tagline": "Passione pura",
+      "logo": "images/loghi/Sampmania.png",
+      "presidente": "Morasso Luca", "stadio": "Cathedral Blaocercada", "anno": "2009",
+      "storia": "<p>Sampmania appartiene al nostro fantacalcio fin dalla prima giornata di fondazione. Dopo anni di amarezza, grazie alla genialità della dirigenza ha capito gli errori ed è pronta a tornare competitiva.</p>",
+      "avg": "72.8", "bonus": 1594, "luck": 2.2, "clean": 104, "amon": 437, "goal": [42, 159, 222], "rig": 69, "fails": 17, "bench": 25, "mod": 89,
+      "palmares": { "campionato": 1, "coppa_italia": 0, "champions": 2, "europa_league": 1, "supercoppa_eu": 1, "supercoppa_it": 1, "intercontinentale": 0, "highlander": 0 }
+    },
+    "trofie": {
+      "id": "trofie", "name": "Le Trofie 'Nfojate", "tagline": "Sapore di sfida",
+      "logo": "images/loghi/TrofieNfojate2025.png",
+      "presidente": "D'Alessandro Marco", "stadio": "Stadium", "anno": "2015",
+      "storia": "<p>Nessuna storia disponibile al momento.</p>",
+      "avg": "73.9", "bonus": 1736, "luck": -3.8, "clean": 81, "amon": 426, "goal": [65, 128, 267], "rig": 63, "fails": 10, "bench": 28, "mod": 279,
+      "palmares": { "campionato": 0, "coppa_italia": 1, "champions": 0, "europa_league": 2, "supercoppa_eu": 1, "supercoppa_it": 0, "intercontinentale": 0, "highlander": 0 }
+    },
+    "dogs": {
+      "id": "dogs", "name": "Straw Dogs", "tagline": "Cani sciolti",
+      "logo": "images/loghi/Dogs.png",
+      "presidente": "Mello Simone", "stadio": "Stadium", "anno": "2018",
+      "storia": "<p>Nessuna storia disponibile al momento.</p>",
+      "avg": "72.9", "bonus": 1582, "luck": 6.0, "clean": 75, "amon": 387, "goal": [40, 121, 194], "rig": 41, "fails": 10, "bench": 16, "mod": 141,
+      "palmares": { "campionato": 1, "coppa_italia": 0, "champions": 3, "europa_league": 1, "supercoppa_eu": 2, "supercoppa_it": 0, "intercontinentale": 0, "highlander": 0 }
+    }
   }
 }
