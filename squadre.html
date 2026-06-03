@@ -173,6 +173,11 @@
             `;
         });
         lucide.createIcons();
+
+        // AGGIUNGI QUESTA RIGA: Forza AOS a ricalcolare i nuovi elementi!
+        setTimeout(() => {
+            AOS.refresh();
+        }, 100);
     }
 
     const modal = document.getElementById('team-modal');
