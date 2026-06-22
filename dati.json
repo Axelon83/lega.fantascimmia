@@ -32,14 +32,7 @@
       "avg": "73.1", "bonus": 1664, "luck": 13.4, "clean": 95, "amon": 452, "goal": [53, 158, 237], "rig": 41, "fails": 19, "bench": 21, "mod": 79,
       "palmares": { "campionato": 1, "coppa_italia": 3, "champions": 2, "europa_league": 0, "supercoppa_eu": 0, "supercoppa_it": 2, "intercontinentale": 0, "highlander": 1 }
     },
-    "mambo": {
-      "id": "mambo", "name": "Mambo FC", "tagline": "Sempre competitivi",
-      "logo": "images/loghi/MamboFC.png",
-      "presidente": "Garbarino Matteo", "stadio": "Stadium", "anno": "2015",
-      "storia": "<p>Nessuna storia disponibile al momento.</p>",
-      "avg": "73.2", "bonus": 1750, "luck": 1.2, "clean": 101, "amon": 380, "goal": [53, 143, 259], "rig": 42, "fails": 13, "bench": 26, "mod": 104,
-      "palmares": { "campionato": 1, "coppa_italia": 2, "champions": 1, "europa_league": 2, "supercoppa_eu": 2, "supercoppa_it": 2, "intercontinentale": 2, "highlander": 1 }
-    },
+    
     "mojito": {
       "id": "mojito", "name": "Mojito FC", "tagline": "Maestri della sorte",
       "logo": "images/loghi/MojitoFC.png",
@@ -85,8 +78,8 @@
       "logo": "images/loghi/Monkey_Logo.png",
       "presidente": "Varni Federico", "stadio": "Stadium", "anno": "2026",
       "storia": "<p>Nessuna storia disponibile al momento.</p>",
-      "avg": "72.9", "bonus": 1582, "luck": 6.0, "clean": 75, "amon": 387, "goal": [40, 121, 194], "rig": 41, "fails": 10, "bench": 16, "mod": 141,
-      "palmares": { "campionato": 1, "coppa_italia": 0, "champions": 3, "europa_league": 1, "supercoppa_eu": 2, "supercoppa_it": 0, "intercontinentale": 0, "highlander": 0 }
+      "avg": "0", "bonus": 0, "luck": 0, "clean": 0, "amon": 0, "goal": [0, 0, 0], "rig": 0, "fails": 0, "bench": 0, "mod": 0,
+      "palmares": { "campionato": 0, "coppa_italia": 0, "champions": 0, "europa_league": 0, "supercoppa_eu": 0, "supercoppa_it": 0, "intercontinentale": 0, "highlander": 0 }
     }
   }
 }
