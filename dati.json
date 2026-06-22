@@ -32,8 +32,8 @@
       "avg": "73.1", "bonus": 1664, "luck": 13.4, "clean": 95, "amon": 452, "goal": [53, 158, 237], "rig": 41, "fails": 19, "bench": 21, "mod": 79,
       "palmares": { "campionato": 1, "coppa_italia": 3, "champions": 2, "europa_league": 0, "supercoppa_eu": 0, "supercoppa_it": 2, "intercontinentale": 0, "highlander": 1 }
     },
-    "mambo": {
-      "id": "mambo", "name": "Pasquale Bruno FC", "tagline": "Sempre competitivi",
+    "pasquale": {
+      "id": "pasquale", "name": "Pasquale Bruno FC", "tagline": "Sempre competitivi",
       "logo": "images/loghi/Monkey_Logo.png",
       "presidente": "Varni Federico", "stadio": "Stadium", "anno": "2026",
       "storia": "<p>Nessuna storia disponibile al momento.</p>",
