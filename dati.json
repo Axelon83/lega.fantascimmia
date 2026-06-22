@@ -37,7 +37,7 @@
       "logo": "images/loghi/Monkey_Logo.png",
       "presidente": "Varni Federico", "stadio": "Stadium", "anno": "2026",
       "storia": "<p>Nessuna storia disponibile al momento.</p>",
-      "avg": "73.2", "bonus": 1750, "luck": 1.2, "clean": 101, "amon": 380, "goal": [53, 143, 259], "rig": 42, "fails": 13, "bench": 26, "mod": 104,
+      "avg": "0", "bonus": 1750, "luck": 1.2, "clean": 101, "amon": 380, "goal": [53, 143, 259], "rig": 42, "fails": 13, "bench": 26, "mod": 104,
       "palmares": { "campionato": 1, "coppa_italia": 2, "champions": 1, "europa_league": 2, "supercoppa_eu": 2, "supercoppa_it": 2, "intercontinentale": 2, "highlander": 1 }
     },
     "mojito": {
