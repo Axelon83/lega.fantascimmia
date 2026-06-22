@@ -79,6 +79,14 @@
       "storia": "<p>Nessuna storia disponibile al momento.</p>",
       "avg": "72.9", "bonus": 1582, "luck": 6.0, "clean": 75, "amon": 387, "goal": [40, 121, 194], "rig": 41, "fails": 10, "bench": 16, "mod": 141,
       "palmares": { "campionato": 1, "coppa_italia": 0, "champions": 3, "europa_league": 1, "supercoppa_eu": 2, "supercoppa_it": 0, "intercontinentale": 0, "highlander": 0 }
+    },
+    "pasquale": {
+      "id": "pasquale", "name": "Pasquale Bruno F.C.", "tagline": "serial killer",
+      "logo": "images/loghi/Monkey_Logo.png",
+      "presidente": "Varni Federico", "stadio": "Stadium", "anno": "2026",
+      "storia": "<p>Nessuna storia disponibile al momento.</p>",
+      "avg": "0", "bonus": 0, "luck": 0, "clean": 0, "amon": 0, "goal": [0, 0, 0], "rig": 0, "fails": 0, "bench": 0, "mod": 0,
+      "palmares": { "campionato": 0, "coppa_italia": 0, "champions": 0, "europa_league": 0, "supercoppa_eu": 0, "supercoppa_it": 0, "intercontinentale": 0, "highlander": 0}
     }
   }
 }
