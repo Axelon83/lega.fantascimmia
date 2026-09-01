@@ -35,7 +35,7 @@
     
     "mojito": {
       "id": "mojito", "name": "Mojito FC", "tagline": "Maestri della sorte",
-      "logo": "images/loghi/MojitoFC.png",
+      "logo": "images/loghi/MojitoFC.jpg",
       "presidente": "Porta Matteo", "stadio": "Mojito Stadium", "anno": "2011",
       "storia": "<p>Mojito F.C. nasce nel 2011 dopo un'importante vacanza a Formentera grazie ad una nuova cordata di investitori. I tifosi sono già in visibilio dopo che il Presidente ha dichiarato che la squadra punta al triplete.</p>",
       "avg": "72.6", "bonus": 1507, "luck": 4.3, "clean": 95, "amon": 410, "goal": [43, 130, 224], "rig": 41, "fails": 7, "bench": 21, "mod": 163,
