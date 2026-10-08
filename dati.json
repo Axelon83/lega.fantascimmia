@@ -2,7 +2,7 @@
   "squadre": {
     "patatinaikos": {
       "id": "patatinaikos", "name": "Patatinaikos", "tagline": "Costanza leggendaria",
-      "logo": "images/loghi/Patatinaikos.png",
+      "logo": "images/loghi/Patatinaikos.jpeg",
       "presidente": "Giori Andrea", "stadio": "La Patatera", "anno": "2011",
       "storia": "<p>Il Patatinaikos viene fondato nel 2011 sulle ceneri dei Debosciati, con l’immissione di capitali freschi da parte di figure di spicco. Questo porta alla costruzione della leggendaria 'Patatera'. Squadra che detta legge entro i confini nazionali, deve migliorare sotto il profilo internazionale.</p>",
       "avg": "73.3", "bonus": 1656, "luck": -1.1, "clean": 102, "amon": 392, "goal": [56, 157, 209], "rig": 40, "fails": 10, "bench": 24, "mod": 176,
