@@ -67,7 +67,7 @@
     },
     "dogs": {
       "id": "dogs", "name": "Straw Dogs", "tagline": "Cani sciolti",
-      "logo": "images/loghi/Dogs.png",
+      "logo": "images/loghi/Strawdogs.png",
       "presidente": "Mello Simone", "stadio": "Stadium", "anno": "2018",
       "storia": "<p>Nessuna storia disponibile al momento.</p>",
       "avg": "72.9", "bonus": 1582, "luck": 6.0, "clean": 75, "amon": 387, "goal": [40, 121, 194], "rig": 41, "fails": 10, "bench": 16, "mod": 141,
