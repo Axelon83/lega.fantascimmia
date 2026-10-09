@@ -10,7 +10,7 @@
     },
     "delu": {
       "id": "delu", "name": "Delu Team", "tagline": "Il club più titolato",
-      "logo": "images/loghi/DeluTeam.jpg",
+      "logo": "images/loghi/DeluTeam.png",
       "presidente": "De Lucia Luca", "stadio": "Tommy's Stadium", "anno": "2008",
       "storia": "<p class='italic text-lg text-white'>...Il club più titolato della lega…..What Else?</p>",
       "avg": "74.3", "bonus": 1835, "luck": 1.4, "clean": 101, "amon": 371, "goal": [65, 127, 278], "rig": 82, "fails": 24, "bench": 18, "mod": 233,
